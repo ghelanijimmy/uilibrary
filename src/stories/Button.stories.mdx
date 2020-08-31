@@ -1,0 +1,60 @@
+import {Meta, Story, Canvas, ArgsTable} from "@storybook/addon-docs/blocks";
+import Button from "../components/Button";
+
+
+<Meta
+	title="Button/MDX"
+	component={Button}
+	argTypes={{
+		text: {
+			name: "Button Text",
+			type: "string",
+			control: "text",
+			description: "Button Text",
+			table: {
+				type: {
+					summary: "String Text",
+					detail: "Inside button text"
+				},
+				defaultValue: {
+					summary: "Default Text"
+				}
+			}
+		}
+	}}
+/>
+
+# This is a documentation page for the Button component
+
+export const Template = ({text}) => <Button text={text} />
+
+<Story
+	name="Default"
+	args={{
+		text: "Default Text"
+	}}
+>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable of='Default' />
+
+# Here are multiple options
+
+<Canvas>
+	<Story name="Default 2" args={{
+		text: "Default Text 2"
+	}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Default 3" args={{
+		text: "Default Text 3"
+	}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Default 4" args={{
+		text: "Default Text 4"
+	}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
