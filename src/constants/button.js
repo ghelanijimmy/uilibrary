@@ -1,4 +1,4 @@
 export const button = {
-	PRIMARY: 'primary',
-	SECONDARY: 'secondary'
-}
+  PRIMARY: "primary",
+  SECONDARY: "secondary",
+};
