@@ -1,3 +1,5 @@
+import sizing from "./sizing";
+
 export const light = {
   button: {
     primary: {
@@ -37,4 +39,5 @@ export const light = {
       },
     },
   },
+  sizing: { ...sizing },
 };

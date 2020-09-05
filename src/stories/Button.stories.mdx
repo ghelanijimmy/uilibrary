@@ -1,19 +1,38 @@
-import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs/blocks";
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Source,
+	ColorPalette,
+	ColorItem,
+	Description,  } from "@storybook/addon-docs/blocks";
 import Button from "../components/Button";
+import {buttonTypes, sizes} from "../constants/constants";
+import dedent from "ts-dedent";
+
+export const PRIMARY = buttonTypes.PRIMARY;
+export const SECONDARY = buttonTypes.SECONDARY;
+export const DEFAULT = buttonTypes.DEFAULT;
+export const SM = sizes.SM;
+export const MD = sizes.MD;
+export const LG = sizes.LG;
+export const XL = sizes.XL;
 
 <Meta
   title="Button/MDX"
   component={Button}
   argTypes={{
     text: {
-      name: "Button Text",
+      name: "text",
       type: "string",
       control: "text",
       description: "Button Text",
+	    defaultValue: "default text",
       table: {
         type: {
-          summary: "String Text",
-          detail: "Inside button text",
+          summary: "Button Text",
+          detail: "String that goes inside button",
         },
         defaultValue: {
           summary: "Default Text",
@@ -21,11 +40,12 @@ import Button from "../components/Button";
       },
     },
     type: {
-      name: "Button Type",
+      name: "type",
       control: {
         type: "inline-radio",
-        options: ["default", "primary", "secondary"],
+        options: [DEFAULT, PRIMARY, SECONDARY],
       },
+	    defaultValue: DEFAULT,
       description: "Button Type",
       table: {
         type: {
@@ -33,57 +53,109 @@ import Button from "../components/Button";
           detail: "Render Primary, Secondary or Default Button",
         },
         defaultValue: {
-          summary: "default",
+          summary: DEFAULT,
         },
       },
     },
+	  size: {
+		  name: "size",
+		  control: {
+			  type: 'inline-radio',
+			  options: [SM, MD, LG, XL]
+		  },
+		  defaultValue: MD,
+		  description: "Button size",
+		  table: {
+			  type: {
+				  summary: "Button size",
+				  detail: "Button padding changes size of button"
+			  },
+			  defaultValue: {
+				  summary: MD
+			  }
+		  }
+	  },
+	  isFullWidth: {
+		  name: 'isFullWidth',
+		  control: {
+			  type: 'boolean'
+		  },
+		  defaultValue: false,
+		  description: "Make button full width to parent container",
+		  table: {
+			  type: {
+				  summary: "Make button full width to parent container",
+				  detail: "Either inline or full width button"
+			  },
+			  defaultValue: false
+		  }
+	  }
   }}
 />
 
-# This is a documentation page for the Button component
+# Button
+### Outside of `description` tag
+<Description markdown={dedent`
+	<p>&nbsp;</p>
+	# Description inside <code>Description</code> tag
+	### Some markdown
+	<p>&nbsp;</p>
+`} />
 
-export const Template = ({ text, type }) => <Button text={text} type={type} />;
+export const Template = ({
+	text,
+	type,
+	size,
+	isFullWidth
+}) => <Button text={text} type={type} size={size} isFullWidth={isFullWidth} />;
 
-<Story
-  name="Default"
-  args={{
-    text: "Default Text",
-    type: "default",
-  }}
->
-  {Template.bind({})}
+export const Default = Template.bind({});
+
+<Story name="Default">
+  {Default}
 </Story>
 
 <ArgsTable story="Default" />
 
-# Here are multiple options
+<Source
+	language='jsx'
+	code={dedent`
+     <Button text="default text" type={DEFAULT} />
+  `}
+/>
+
+# Button Variations
 
 <Canvas>
-  <Story
-    name="Default 2"
-    args={{
-      text: "Default Text 2",
-      type: "default",
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-  <Story
-    name="Default 3"
-    args={{
-      text: "Default Text 3",
-      type: "primary",
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-  <Story
-    name="Default 4"
-    args={{
-      text: "Default Text 4",
-      type: "secondary",
-    }}
-  >
-    {Template.bind({})}
-  </Story>
+	<Story name="Default Button" args={{text: SECONDARY, type: DEFAULT, size: XL}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Primary" args={{text: PRIMARY, type: PRIMARY, size: LG}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Secondary" args={{text: SECONDARY, type: SECONDARY, size: SM}}>
+		{Template.bind({})}
+	</Story>
 </Canvas>
+
+## Our Color palette
+<p>&nbsp;</p>
+
+<ColorPalette>
+	<ColorItem
+		title="Button BG Colors"
+		subtitle="Default state"
+		colors={[
+			'#fff',
+			'#a00000',
+			'#0255d7'
+		]} />
+	<ColorItem
+		title="Button BG Colors"
+		subtitle="Hover state"
+		colors={[
+			'#333',
+			'#ba1e1e',
+			'#1d6de2'
+		]} />
+</ColorPalette>
