@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+/**
+ * Global styles reset wrapper
+ * @type {*|React.ReactElement<any, any>}
+ * @category Styles
+ */
 const GlobalStyle = styled.div`
   & * {
     font-size: ${({ theme }) => theme.common.font.size};

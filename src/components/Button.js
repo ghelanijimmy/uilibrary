@@ -6,6 +6,14 @@ import { buttonTypes, sizes } from "../constants/constants";
 const { PRIMARY, SECONDARY, DEFAULT } = buttonTypes;
 const { SM, MD, LG, XL } = sizes;
 
+/**
+ * Button Styled Component
+ * @param type {string}
+ * @param size {string}
+ * @param isFullWidth {boolean}
+ * @return {JSX.Element}
+ * @category Styled Components
+ */
 export const ButtonSC = styled.button`
   border-radius: ${({ theme }) => theme.common.box.borderRadius};
   cursor: pointer;
@@ -94,6 +102,25 @@ ButtonSC.propTypes = {
   isFullWidth: PropTypes.bool,
 };
 
+/**
+ * @typedef {'default' | 'primary' | 'secondary'} buttonType
+ */
+
+/**
+ * @typedef {'sm' | 'md' | 'lg' | 'xl'} buttonSize
+ */
+
+/**
+ * Button Component
+ * @param text {string}
+ * @param type {buttonType}
+ * @param size {buttonSize}
+ * @param isFullWidth {boolean}
+ * @param asAnchor {boolean}
+ * @param link {string}
+ * @return {JSX.Element}
+ * @category Components
+ */
 const Button = ({
   text = "Default Text",
   type = DEFAULT,
@@ -116,8 +143,8 @@ const Button = ({
 };
 Button.propTypes = {
   text: PropTypes.string,
-  type: PropTypes.string,
-  size: PropTypes.string,
+  type: PropTypes.oneOf(["default", "primary", "secondary"]),
+  size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   isFullWidth: PropTypes.bool,
   asAnchor: PropTypes.bool,
   link: PropTypes.string,

@@ -1,5 +1,10 @@
-import base from "./base";
+import { base } from "./base";
 
+/**
+ * Sizing styles for theme provider
+ * @type {{quarterPadding: string, halfPadding: string, defaultPadding: string, doublePadding: string, biggerPadding: string}}
+ * @category Styles
+ */
 const sizing = {
   defaultPadding: `${base.defaultPadding}px`,
   halfPadding: `${base.defaultPadding * 0.5}px`,

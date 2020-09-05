@@ -1,5 +1,10 @@
 import { colors, colorsLight } from "./colors";
 
+/**
+ * Button styles for light theme
+ * @type {{secondary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}, primary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}}}
+ * @category Styles
+ */
 export const buttonLight = {
   primary: {
     regular: {
