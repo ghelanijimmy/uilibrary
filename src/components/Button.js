@@ -10,6 +10,7 @@ const ButtonSC = styled.button`
   border-radius: 4px;
   cursor: pointer;
   transition: 0.25s all ease-in-out;
+  display: inline-block;
   ${({ type, theme }) => {
     switch (type) {
       case PRIMARY:
@@ -57,25 +58,25 @@ const ButtonSC = styled.button`
     switch (size) {
       case SM:
         return css`
-          padding: ${theme.light.sizing.halfPadding};
+          padding: ${theme.common.sizing.halfPadding};
         `;
       case MD:
         return css`
-          padding: ${theme.light.sizing.defaultPadding};
+          padding: ${theme.common.sizing.defaultPadding};
         `;
       case LG:
         return css`
-          padding: ${theme.light.sizing.defaultPadding}
-            ${theme.light.sizing.biggerPadding};
+          padding: ${theme.common.sizing.defaultPadding}
+            ${theme.common.sizing.biggerPadding};
         `;
       case XL:
         return css`
-          padding: ${theme.light.sizing.biggerPadding}
-            ${theme.light.sizing.doublePadding};
+          padding: ${theme.common.sizing.biggerPadding}
+            ${theme.common.sizing.doublePadding};
         `;
       default:
         return css`
-          padding: ${theme.light.sizing.defaultPadding};
+          padding: ${theme.common.sizing.defaultPadding};
         `;
     }
   }}
@@ -98,8 +99,16 @@ const Button = ({
   type = DEFAULT,
   size = MD,
   isFullWidth = false,
+  asAnchor = false,
+  link = "",
 }) => (
-  <ButtonSC type={type} size={size} isFullWidth={isFullWidth}>
+  <ButtonSC
+    as={(asAnchor && "a") || "button"}
+    type={type}
+    size={size}
+    isFullWidth={isFullWidth}
+    href={(asAnchor && link) || ""}
+  >
     {text}
   </ButtonSC>
 );
@@ -108,5 +117,7 @@ Button.propTypes = {
   type: PropTypes.string,
   size: PropTypes.string,
   isFullWidth: PropTypes.bool,
+  asAnchor: PropTypes.bool,
+  link: PropTypes.string,
 };
 export default Button;

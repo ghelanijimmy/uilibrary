@@ -6,7 +6,8 @@ import {
 	Source,
 	ColorPalette,
 	ColorItem,
-	Description,  } from "@storybook/addon-docs/blocks";
+	Description,
+} from "@storybook/addon-docs/blocks";
 import Button from "../components/Button";
 import {buttonTypes, sizes} from "../constants/constants";
 import dedent from "ts-dedent";
@@ -111,11 +112,11 @@ export const Template = ({
 
 export const Default = Template.bind({});
 
-<Story name="Default">
+<Story name="Default Button">
   {Default}
 </Story>
 
-<ArgsTable story="Default" />
+<ArgsTable story="Default Button" />
 
 <Source
 	language='jsx'
@@ -127,7 +128,7 @@ export const Default = Template.bind({});
 # Button Variations
 
 <Canvas>
-	<Story name="Default Button" args={{text: SECONDARY, type: DEFAULT, size: XL}}>
+	<Story name="Default" args={{text: SECONDARY, type: DEFAULT, size: XL}}>
 		{Template.bind({})}
 	</Story>
 	<Story name="Primary" args={{text: PRIMARY, type: PRIMARY, size: LG}}>

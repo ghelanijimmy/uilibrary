@@ -35,6 +35,16 @@ export default {
       control: "boolean",
       defaultValue: false,
     },
+    asAnchor: {
+      type: "boolean",
+      control: "boolean",
+      defaultValue: false,
+    },
+    link: {
+      type: "string",
+      control: "text",
+      defaultValue: "",
+    },
   },
   parameters: {
     docs: {
@@ -45,8 +55,15 @@ export default {
   },
 };
 
-const Template = ({ text, type, size, isFullWidth }) => (
-  <Button text={text} type={type} size={size} isFullWidth={isFullWidth} />
+const Template = ({ text, type, size, isFullWidth, asAnchor, link }) => (
+  <Button
+    text={text}
+    type={type}
+    size={size}
+    isFullWidth={isFullWidth}
+    asAnchor={asAnchor}
+    link={link}
+  />
 );
 
 export const Default = Template.bind({});

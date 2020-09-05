@@ -5,6 +5,7 @@ import LibraryProvider from "../src/store/Context";
 import { withCssResources } from "@storybook/addon-cssresources";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { themes } from "@storybook/theming";
+import GlobalStyle from "../src/styles/GlobalStyle";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -35,7 +36,9 @@ export const decorators = [
   (Story) => (
     <LibraryProvider>
       <ThemeProvider theme={theme}>
-        <Story />
+        <GlobalStyle>
+          <Story />
+        </GlobalStyle>
       </ThemeProvider>
     </LibraryProvider>
   ),
