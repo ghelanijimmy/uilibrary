@@ -1,14 +1,27 @@
-name: "Chromatic"
-on: push
+name: Run Chromatic and Danger js checks
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
 
 jobs:
-    test:
+    chromatic:
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v2
-          with:
-              fetch-depth: 0 # Required to retrieve git history
-        - uses: chromaui/action@v1
-          with:
-              token: ${{ secrets.GITHUB_TOKEN }}
-              projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            
+            - name: Use Node.js 10x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 10.x
+            
+            - name: Install
+              run: npm install
+              
+            - name: Chromatic
+              uses: chromaui/action@v1
+              with:
+                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  exitZeroOnChanges: true
