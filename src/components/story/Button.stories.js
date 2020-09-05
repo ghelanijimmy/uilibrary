@@ -12,7 +12,7 @@ export default {
       type: "string",
       control: "text",
       description: "Text inside constants",
-      defaultValue: "Default Text",
+      defaultValue: "Default Button Text",
     },
     type: {
       type: "enum",

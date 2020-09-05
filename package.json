@@ -21,7 +21,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json",
+    "chromatic": "npx chromatic --project-token f6x6pwq1wsk"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +52,7 @@
     "@storybook/react": "^6.0.21",
     "babel-loader": "^8.1.0",
     "better-docs": "^2.3.2",
+    "chromatic": "^5.1.0",
     "prop-types": "^15.7.2",
     "react-is": "^16.13.1",
     "ts-dedent": "^1.1.1"
