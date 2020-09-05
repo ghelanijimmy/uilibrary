@@ -6,7 +6,7 @@ import { buttonTypes, sizes } from "../constants/constants";
 const { PRIMARY, SECONDARY, DEFAULT } = buttonTypes;
 const { SM, MD, LG, XL } = sizes;
 
-const ButtonSC = styled.button`
+export const ButtonSC = styled.button`
   border-radius: ${({ theme }) => theme.common.box.borderRadius};
   cursor: pointer;
   transition: ${({ theme }) => theme.common.transitions.defaultTransition};
@@ -101,17 +101,19 @@ const Button = ({
   isFullWidth = false,
   asAnchor = false,
   link = "",
-}) => (
-  <ButtonSC
-    as={(asAnchor && "a") || "button"}
-    type={type}
-    size={size}
-    isFullWidth={isFullWidth}
-    href={(asAnchor && link) || ""}
-  >
-    {text}
-  </ButtonSC>
-);
+}) => {
+  return (
+    <ButtonSC
+      as={(asAnchor && "a") || "button"}
+      type={type}
+      size={size}
+      isFullWidth={isFullWidth}
+      href={(asAnchor && link) || ""}
+    >
+      {text}
+    </ButtonSC>
+  );
+};
 Button.propTypes = {
   text: PropTypes.string,
   type: PropTypes.string,

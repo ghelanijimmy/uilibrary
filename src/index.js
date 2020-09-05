@@ -5,13 +5,16 @@ import * as serviceWorker from "./serviceWorker";
 import GlobalStyle from "./styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme/theme";
+import LibraryProvider from "./store/Context";
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyle>
-      <App />
-    </GlobalStyle>
-  </ThemeProvider>,
+  <LibraryProvider>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle>
+        <App />
+      </GlobalStyle>
+    </ThemeProvider>
+  </LibraryProvider>,
   document.getElementById("root")
 );
 
