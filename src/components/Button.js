@@ -7,9 +7,9 @@ const { PRIMARY, SECONDARY, DEFAULT } = buttonTypes;
 const { SM, MD, LG, XL } = sizes;
 
 const ButtonSC = styled.button`
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.common.box.borderRadius};
   cursor: pointer;
-  transition: 0.25s all ease-in-out;
+  transition: ${({ theme }) => theme.common.transitions.defaultTransition};
   display: inline-block;
   ${({ type, theme }) => {
     switch (type) {

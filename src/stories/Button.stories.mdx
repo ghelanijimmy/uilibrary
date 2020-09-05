@@ -90,6 +90,32 @@ export const XL = sizes.XL;
 			  },
 			  defaultValue: false
 		  }
+	  },
+	  asAnchor: {
+		  name: 'asAnchor',
+		  control: 'boolean',
+		  defaultValue: false,
+		  description: 'Render button as Anchor tag',
+		  table: {
+			  type: {
+				  summary: "Render as button",
+				  detail: "Use styled-components 'as' prop to render button as anchoor"
+			  },
+			  defaultValue: false
+		  }
+	  },
+	  link: {
+		  name: 'link',
+		  control: 'text',
+		  defaultValue: '',
+		  description: "HREF for button rendered as anchor",
+		  table: {
+			  type: {
+				  summary: "HREF for anchor",
+				  detail: "If button is rendered as anchor, href attribute will be set"
+			  },
+			  defaultValue: ''
+		  }
 	  }
   }}
 />
@@ -107,8 +133,19 @@ export const Template = ({
 	text,
 	type,
 	size,
-	isFullWidth
-}) => <Button text={text} type={type} size={size} isFullWidth={isFullWidth} />;
+	isFullWidth,
+	link,
+	asAnchor
+}) => (
+	<Button
+		text={text}
+		type={type}
+		size={size}
+		isFullWidth={isFullWidth}
+		link={link}
+		asAnchor={asAnchor}
+	/>
+)
 
 export const Default = Template.bind({});
 
