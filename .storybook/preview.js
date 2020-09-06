@@ -29,6 +29,7 @@ export const parameters = {
   docs: {
     theme: themes.light,
   },
+  layout: "centered",
 };
 
 export const decorators = [

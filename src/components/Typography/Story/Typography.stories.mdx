@@ -1,10 +1,35 @@
-import {Meta, Canvas, Story, ArgsTable, Description, Source} from "@storybook/addon-docs/blocks";
-import Typography from "../Typography";
+import {Meta, Canvas, Story, ArgsTable, Description, Source, Typeset} from "@storybook/addon-docs/blocks";
+import Paragraph from "../Paragraph";
 import dedent from "ts-dedent";
+import {sizes} from "../../../constants/constants";
+
+export const SM = sizes.SM;
+export const MD = sizes.MD;
+export const LG = sizes.LG;
+export const XL = sizes.XL;
 
 <Meta
 	title="Typography/MDX"
-	component={Typography}
+	component={Paragraph}
+	argTypes={{
+		size: {
+			name: 'size',
+			defaultValue: "",
+			control: {
+				type: 'inline-radio',
+				options: [SM, MD, LG, XL]
+			},
+			table: {
+				type: {
+					summary: "Paragraph size",
+					detail: "Render different font sizes for the paragraph"
+				},
+				defaultValue: {
+					summary: 'blank for default'
+				}
+			}
+		}
+	}}
 />
 
 # Typography
@@ -17,8 +42,8 @@ import dedent from "ts-dedent";
 	<p>&nbsp;</p>
 `} />
 
-export const Template = args => (
-	<Typography {...args}>Default Text</Typography>
+export const Template = ({size}) => (
+	<Paragraph size={size}>Default Text</Paragraph>
 );
 
 export const DefaultParagraph = Template.bind({});
@@ -32,6 +57,34 @@ export const DefaultParagraph = Template.bind({});
 <Source
 	language="jsx"
 	code={dedent`
-		<Typography>Default Paragraph</Typography>
+		<Paragraph size="">Default Paragraph</Paragraph>
 	`}
+/>
+
+# Paragraph Variations
+
+<Canvas>
+	<Story name="Small" args={{size: SM}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Default" args={{size: ""}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Medium" args={{size: MD}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Large" args={{size: LG}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Extra Large" args={{size: XL}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Typeset
+<p>&nbsp;</p>
+
+<Typeset
+	fontSizes={['.875em', '1em', '1.25em', '1.5em', '2em']}
+	sampleText="Some Sample Text"
 />
