@@ -28,6 +28,18 @@ export const XL = sizes.XL;
 					summary: 'blank for default'
 				}
 			}
+		},
+		children: {
+			name: 'children (Content)',
+			defaultValue: "Default Text",
+			control: "text",
+			table: {
+				type: {
+					summary: "Content",
+					detail: "Any text or html/jsx content can go in here"
+				},
+				defaultValue: "Default Text"
+			}
 		}
 	}}
 />
@@ -42,8 +54,8 @@ export const XL = sizes.XL;
 	<p>&nbsp;</p>
 `} />
 
-export const Template = ({size}) => (
-	<Paragraph size={size}>Default Text</Paragraph>
+export const Template = ({size, children}) => (
+	<Paragraph size={size}>{children}</Paragraph>
 );
 
 export const DefaultParagraph = Template.bind({});

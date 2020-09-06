@@ -16,11 +16,16 @@ export default {
       },
       defaultValue: "",
     },
+    children: {
+      type: "string",
+      control: "text",
+      defaultValue: "Default Text",
+    },
   },
 };
 
-const TypographyTemplate = ({ size }) => (
-  <Paragraph size={size}>Default Text</Paragraph>
+const TypographyTemplate = ({ size, children }) => (
+  <Paragraph size={size}>{children}</Paragraph>
 );
 
 export const DefaultParagraph = TypographyTemplate.bind({});

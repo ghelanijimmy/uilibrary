@@ -6,27 +6,27 @@ import { sizes } from "../../constants/constants";
 const { SM, MD, LG, XL } = sizes;
 
 export const ParagraphSC = styled.p`
-  ${({ size }) => {
+  ${({ size, theme }) => {
     switch (size) {
       case SM:
         return css`
-          font-size: 0.875em;
+          font-size: ${theme.common.type.small};
         `;
       case MD:
         return css`
-          font-size: 1.25em;
+          font-size: ${theme.common.type.medium};
         `;
       case LG:
         return css`
-          font-size: 1.5em;
+          font-size: ${theme.common.type.large};
         `;
       case XL:
         return css`
-          font-size: 2em;
+          font-size: ${theme.common.type.extraLarge};
         `;
       default:
         return css`
-          font-size: 1em;
+          font-size: ${theme.common.type.default};
         `;
     }
   }}
