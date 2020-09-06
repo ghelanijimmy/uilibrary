@@ -5,7 +5,7 @@ import { base } from "./base";
  * @type {{size: string, family: string}}
  * @category Styles
  */
-export const font = {
+export const typography = {
   family: "sans-serif",
   size: `${base.fontSize}px`,
 };
