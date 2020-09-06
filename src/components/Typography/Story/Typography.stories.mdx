@@ -1,0 +1,37 @@
+import {Meta, Canvas, Story, ArgsTable, Description, Source} from "@storybook/addon-docs/blocks";
+import Typography from "../Typography";
+import dedent from "ts-dedent";
+
+<Meta
+	title="Typography/MDX"
+	component={Typography}
+/>
+
+# Typography
+### Outside of `Descripton` tag
+
+<Description markdown={dedent`
+	<p>&nbsp;</p>
+	# Description inside <code>Description</code> tag
+	### Some markdown
+	<p>&nbsp;</p>
+`} />
+
+export const Template = args => (
+	<Typography {...args}>Default Text</Typography>
+);
+
+export const DefaultParagraph = Template.bind({});
+
+<Story name="Default Paragraph">
+	{DefaultParagraph}
+</Story>
+
+<ArgsTable story="Default Paragraph" />
+
+<Source
+	language="jsx"
+	code={dedent`
+		<Typography>Default Paragraph</Typography>
+	`}
+/>
