@@ -6,7 +6,7 @@
  * @param SECONDARY {'secondary'}
  * @category Constants
  */
-export const buttonTypes = {
+export const colorStyles = {
   PRIMARY: "primary",
   SECONDARY: "secondary",
   DEFAULT: "default",
