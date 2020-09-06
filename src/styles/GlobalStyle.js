@@ -7,8 +7,8 @@ import styled from "styled-components";
  */
 const GlobalStyle = styled.div`
   & * {
-    font-size: ${({ theme }) => theme.common.font.size};
-    font-family: ${({ theme }) => theme.common.font.family};
+    font-size: ${({ theme }) => theme.common.type.size};
+    font-family: ${({ theme }) => theme.common.type.family};
   }
   & a {
     text-decoration: none;

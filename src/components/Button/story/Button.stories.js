@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button";
-import { buttonTypes, sizes } from "../../constants/constants";
+import { buttonTypes, sizes } from "../../../constants/constants";
 
 const { PRIMARY, SECONDARY, DEFAULT } = buttonTypes;
 const { SM, MD, LG, XL } = sizes;

@@ -1,7 +1,7 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { buttonTypes, sizes } from "../constants/constants";
+import { buttonTypes, sizes } from "../../constants/constants";
 
 const { PRIMARY, SECONDARY, DEFAULT } = buttonTypes;
 const { SM, MD, LG, XL } = sizes;

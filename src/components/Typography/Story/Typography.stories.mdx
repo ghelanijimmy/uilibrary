@@ -1,0 +1,102 @@
+import {Meta, Canvas, Story, ArgsTable, Description, Source, Typeset} from "@storybook/addon-docs/blocks";
+import Paragraph from "../Paragraph";
+import dedent from "ts-dedent";
+import {sizes} from "../../../constants/constants";
+
+export const SM = sizes.SM;
+export const MD = sizes.MD;
+export const LG = sizes.LG;
+export const XL = sizes.XL;
+
+<Meta
+	title="Typography/MDX"
+	component={Paragraph}
+	argTypes={{
+		size: {
+			name: 'size',
+			defaultValue: "",
+			control: {
+				type: 'inline-radio',
+				options: [SM, MD, LG, XL]
+			},
+			table: {
+				type: {
+					summary: "Paragraph size",
+					detail: "Render different font sizes for the paragraph"
+				},
+				defaultValue: {
+					summary: 'blank for default'
+				}
+			}
+		},
+		children: {
+			name: 'children (Content)',
+			defaultValue: "Default Text",
+			control: "text",
+			table: {
+				type: {
+					summary: "Content",
+					detail: "Any text or html/jsx content can go in here"
+				},
+				defaultValue: "Default Text"
+			}
+		}
+	}}
+/>
+
+# Typography
+### Outside of `Descripton` tag
+
+<Description markdown={dedent`
+	<p>&nbsp;</p>
+	# Description inside <code>Description</code> tag
+	### Some markdown
+	<p>&nbsp;</p>
+`} />
+
+export const Template = ({size, children}) => (
+	<Paragraph size={size}>{children}</Paragraph>
+);
+
+export const DefaultParagraph = Template.bind({});
+
+<Story name="Default Paragraph">
+	{DefaultParagraph}
+</Story>
+
+<ArgsTable story="Default Paragraph" />
+
+<Source
+	language="jsx"
+	code={dedent`
+		<Paragraph size="">Default Paragraph</Paragraph>
+	`}
+/>
+
+# Paragraph Variations
+
+<Canvas>
+	<Story name="Small" args={{size: SM}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Default" args={{size: ""}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Medium" args={{size: MD}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Large" args={{size: LG}}>
+		{Template.bind({})}
+	</Story>
+	<Story name="Extra Large" args={{size: XL}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Typeset
+<p>&nbsp;</p>
+
+<Typeset
+	fontSizes={['.875em', '1em', '1.25em', '1.5em', '2em']}
+	sampleText="Some Sample Text"
+/>
