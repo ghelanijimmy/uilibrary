@@ -1,7 +1,7 @@
 import {Meta, Canvas, Story, ArgsTable, Description, Source, Typeset} from "@storybook/addon-docs/blocks";
-import Paragraph from "../Paragraph";
 import dedent from "ts-dedent";
 import {sizes, colorStyles} from "../../../constants/constants";
+import Anchor from "../Anchor";
 
 export const SM = sizes.SM;
 export const MD = sizes.MD;
@@ -12,12 +12,12 @@ export const SECONDARY = colorStyles.SECONDARY;
 export const DEFAULT = colorStyles.DEFAULT;
 
 <Meta
-	title="Typography/MDX"
-	component={Paragraph}
+	title="Typography/Anchor/MDX"
+	component={Anchor}
 	argTypes={{
 		size: {
 			name: 'size',
-			defaultValue: "",
+			defaultValue: MD,
 			control: {
 				type: 'inline-radio',
 				options: [SM, MD, LG, XL]
@@ -58,20 +58,6 @@ export const DEFAULT = colorStyles.DEFAULT;
 				}
 			}
 		},
-		asSpan: {
-			name: 'asSpan',
-			defaultValue: false,
-			control: 'boolean',
-			table: {
-				type: {
-					summary: "Render as span",
-					detail: "Render as 'span' tag instead of 'p' tag"
-				},
-				defaultValue: {
-					summary: false
-				}
-			}
-		},
 		displayInline: {
 			name: 'displayInline',
 			defaultValue: false,
@@ -100,22 +86,41 @@ export const DEFAULT = colorStyles.DEFAULT;
 				}
 			}
 		},
-		makeBlock: {
-			name: 'makeBlock',
-			defaultValue: false,
-			control: 'boolean',
+		hrefLink: {
+			name: "hrefLink",
+			defaultValue: "",
+			control: "text",
 			table: {
 				type: {
-					summary: 'Make block',
-					detail: "If not displayInline or makeInlineBLock, change CSS to display block"
+					summary: "HREF Value",
+					detail: "HREF URL value goes here (can include tel, or sms)"
 				},
-				defaultValue: false
+				defaultValue: {
+					summary: ""
+				}
 			}
-		}
+		},
+		hrefTarget: {
+			name: "hrefLink",
+			defaultValue: "_blank",
+			control: {
+				type: "inline-radio",
+				options: ["_blank", "_self", "_parent", "_top"]
+			},
+			table: {
+				type: {
+					summary: "HREF Target",
+					detail: "HREF Target value goes here"
+				},
+				defaultValue: {
+					summary: "_blank"
+				}
+			}
+		},
 	}}
 />
 
-# Typography
+# Anchor
 ### Outside of `Descripton` tag
 
 <Description markdown={dedent`
@@ -125,61 +130,61 @@ export const DEFAULT = colorStyles.DEFAULT;
 	<p>&nbsp;</p>
 `} />
 
-## Single Paragraph component
+## Single Anchor component
 
-<Story name="Default Text">
-	{args => <Paragraph {...args} />}
+<Story name="Default Anchor">
+	{args => <Anchor {...args} />}
 </Story>
 
-<ArgsTable story="Default Text" />
+<ArgsTable story="Default Anchor" />
 
 <Source
 	language="jsx"
 	code={dedent`
-		<Paragraph size="" children="Default Text" color="">Default Text</Paragraph>
+		<Anchor size="" color="">Default Link</Anchor>
 	`}
 />
 
-## Multiple Paragraph components
+## Multiple Anchor components
 
-<Story name="Multiple Paragraphs">
+<Story name="Multiple Anchor">
 	{args => (
 		<div>
-			<Paragraph {...args} />
-			<Paragraph {...args} />
+			<Anchor {...args} />
+			<Anchor {...args} />
 		</div>
 	)}
 </Story>
 
-<ArgsTable story="Multiple Paragraphs" />
+<ArgsTable story="Multiple Anchors" />
 
 <Source
 	language="jsx"
 	code={dedent`
 		<div>
-			<Paragraph size="" children="Default Text" color="">Default Text</Paragraph>
-			<Paragraph size="" children="Default Text" color="">Default Text</Paragraph>
+			<Anchor size="" children="Default Text" color="">Default Link</Anchor>
+			<Anchor size="" children="Default Text" color="">Default Link</Anchor>
 		</div>
 	`}
 />
 
-# Paragraph Variations
+# Anchor Variations
 
 <Canvas>
 	<Story name="Small" args={{size: SM, children: "Default", color: DEFAULT}}>
-		{args => <Paragraph {...args} />}
+		{args => <Anchor {...args} />}
 	</Story>
 	<Story name="Default" args={{size: "", children: 'Primary', color: PRIMARY}}>
-		{args => <Paragraph {...args} />}
+		{args => <Anchor {...args} />}
 	</Story>
 	<Story name="Medium" args={{size: MD, children: 'Secondary', color: SECONDARY}}>
-		{args => <Paragraph {...args} />}
+		{args => <Anchor {...args} />}
 	</Story>
 	<Story name="Large" args={{size: LG, children: 'Large', color: '#ededed'}}>
-		{args => <Paragraph {...args} />}
+		{args => <Anchor {...args} />}
 	</Story>
 	<Story name="Extra Large" args={{size: XL, children: 'Extra Large', color: 'pink'}}>
-		{args => <Paragraph {...args} />}
+		{args => <Anchor {...args} />}
 	</Story>
 </Canvas>
 

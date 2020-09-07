@@ -5,7 +5,7 @@ import { sizes } from "../../../constants/constants";
 const { SM, MD, LG, XL } = sizes;
 
 export default {
-  title: "Typography/CSF",
+  title: "Typography/Paragraph/CSF",
   component: Paragraph,
   argTypes: {
     size: {
@@ -49,13 +49,14 @@ export default {
   },
 };
 
-const TypographyTemplate = ({
+const ParagraphTemplate = ({
   size,
   children,
   color,
   asSpan,
   displayInline,
   makeInlineBlock,
+  makeBlock,
 }) => (
   <Paragraph
     size={size}
@@ -63,27 +64,28 @@ const TypographyTemplate = ({
     asSpan={asSpan}
     displayInline={displayInline}
     makeInlineBlock={makeInlineBlock}
+    makeBlock={makeBlock}
   >
     {children}
   </Paragraph>
 );
 
-export const DefaultParagraph = TypographyTemplate.bind({});
+export const DefaultParagraph = ParagraphTemplate.bind({});
 
-export const SmallParagraph = TypographyTemplate.bind({});
+export const SmallParagraph = ParagraphTemplate.bind({});
 SmallParagraph.args = {
   size: SM,
 };
 
-export const MediumParagraph = TypographyTemplate.bind({});
+export const MediumParagraph = ParagraphTemplate.bind({});
 MediumParagraph.args = {
   size: MD,
 };
-export const LargeParagraph = TypographyTemplate.bind({});
+export const LargeParagraph = ParagraphTemplate.bind({});
 LargeParagraph.args = {
   size: LG,
 };
-export const ExtraLargeParagraph = TypographyTemplate.bind({});
+export const ExtraLargeParagraph = ParagraphTemplate.bind({});
 ExtraLargeParagraph.args = {
   size: XL,
 };

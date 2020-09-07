@@ -2,69 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { colorStyles, sizes } from "../../constants/constants";
+import TypographySC from "./styled-components/Typography";
 
 const { SM, MD, LG, XL } = sizes;
 const { PRIMARY, DEFAULT, SECONDARY } = colorStyles;
 
-export const ParagraphSC = styled.p`
-
-  margin-bottom: ${({ theme }) => theme.common.sizing.halfPadding};
-  
-  ${({ size, theme }) => {
-    switch (size) {
-      case SM:
-        return css`
-          font-size: ${theme.common.type.small};
-        `;
-      case MD:
-        return css`
-          font-size: ${theme.common.type.medium};
-        `;
-      case LG:
-        return css`
-          font-size: ${theme.common.type.large};
-        `;
-      case XL:
-        return css`
-          font-size: ${theme.common.type.extraLarge};
-        `;
-      default:
-        return css`
-          font-size: ${theme.common.type.default};
-        `;
-    }
-  }}
-
-  ${({ color, theme }) => {
-    switch (color) {
-      case PRIMARY:
-        return css`
-          color: ${theme.light.colors.primary};
-        `;
-      case SECONDARY:
-        return css`
-          color: ${theme.light.colors.secondary};
-        `;
-      default:
-        return css`
-          color: ${color || theme.light.colors.body};
-        `;
-    }
-  }}
-  
-  ${({ displayInline, makeInlineBlock, theme }) =>
-    displayInline &&
-    css`
-      display: ${(makeInlineBlock && "inline-block") || "inline"};
-      margin-right: ${theme.common.sizing.quarterPadding};
-    `}
-  
+export const ParagraphSC = styled(TypographySC)`
   ${({ makeBlock }) =>
     makeBlock &&
     css`
       display: block;
     `}
-  
 `;
 
 ParagraphSC.propTypes = {
@@ -76,13 +24,13 @@ ParagraphSC.propTypes = {
 };
 
 const Paragraph = ({
-  children,
-  size,
-  color,
-  asSpan,
-  displayInline,
-  makeInlineBlock,
-  makeBlock,
+  children = null,
+  size = MD,
+  color = DEFAULT,
+  asSpan = false,
+  displayInline = false,
+  makeInlineBlock = false,
+  makeBlock = false,
 }) => {
   return (
     <ParagraphSC
