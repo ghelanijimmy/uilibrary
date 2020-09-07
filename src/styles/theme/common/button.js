@@ -2,7 +2,7 @@ import { colors, colorsLight } from "./colors";
 
 /**
  * Button styles for light theme
- * @type {{secondary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}, primary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}}}
+ * @type {{secondary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}, default: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}, primary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}}}
  * @category Styles
  */
 export const buttonLight = {
@@ -16,12 +16,12 @@ export const buttonLight = {
       hoverBorderColor: colorsLight.primaryLighter1,
     },
     inverse: {
-      bgColor: colors.white,
+      bgColor: "transparent",
       color: colorsLight.primary,
-      hoverBGColor: colors.white,
-      hoverColor: colorsLight.primaryLighter1,
+      hoverBGColor: colorsLight.primary,
+      hoverColor: colors.white,
       borderColor: colorsLight.primary,
-      hoverBorderColor: colorsLight.primaryLighter1,
+      hoverBorderColor: colorsLight.primary,
     },
   },
   secondary: {
@@ -34,12 +34,30 @@ export const buttonLight = {
       hoverBorderColor: colorsLight.secondaryLighter1,
     },
     inverse: {
-      bgColor: colors.white,
+      bgColor: "transparent",
       color: colorsLight.secondary,
-      hoverBGColor: colors.white,
-      hoverColor: colorsLight.secondaryLighter1,
+      hoverBGColor: colorsLight.secondary,
+      hoverColor: colors.white,
       borderColor: colorsLight.secondary,
-      hoverBorderColor: colorsLight.secondaryLighter1,
+      hoverBorderColor: colorsLight.secondary,
+    },
+  },
+  default: {
+    regular: {
+      bgColor: colorsLight.body,
+      color: colors.white,
+      hoverBGColor: colorsLight.bodyDark,
+      hoverColor: colors.white,
+      borderColor: colorsLight.body,
+      hoverBorderColor: colorsLight.bodyDark,
+    },
+    inverse: {
+      bgColor: "transparent",
+      color: colorsLight.body,
+      hoverBGColor: colorsLight.body,
+      hoverColor: colors.white,
+      borderColor: colorsLight.body,
+      hoverBorderColor: colorsLight.body,
     },
   },
 };

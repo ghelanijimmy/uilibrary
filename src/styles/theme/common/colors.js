@@ -19,4 +19,5 @@ export const colorsLight = {
   secondary: "#0255d7",
   secondaryLighter1: "#1d6de2",
   body: "#333",
+  bodyDark: "#1d1d1d",
 };

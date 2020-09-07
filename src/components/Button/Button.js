@@ -16,52 +16,64 @@ const { SM, MD, LG, XL } = sizes;
  */
 export const ButtonSC = styled.button`
   border-radius: ${({ theme }) => theme.common.box.borderRadius};
+  text-align: center;
   cursor: pointer;
   transition: ${({ theme }) => theme.common.transitions.defaultTransition};
   display: inline-block;
-  ${({ type, theme }) => {
+  
+  ${({ type, theme, inverse }) => {
     switch (type) {
       case PRIMARY:
-        return css`
-          color: ${theme.light.button.primary.regular.color};
-          background-color: ${theme.light.button.primary.regular.bgColor};
-          border: 1px solid ${theme.light.button.primary.regular.borderColor};
-
-          &:hover {
-            background-color: ${theme.light.button.primary.regular
-              .hoverBGColor};
-            color: ${theme.light.button.primary.regular.hoverColor};
-            border-color: ${theme.light.button.primary.regular
-              .hoverBorderColor};
-          }
-        `;
       case SECONDARY:
         return css`
-          color: ${theme.light.button.secondary.regular.color};
-          background-color: ${theme.light.button.secondary.regular.bgColor};
-          border: 1px solid ${theme.light.button.secondary.regular.borderColor};
+          color: ${theme.light.button[type][(inverse && "inverse") || "regular"]
+            .color};
+          background-color: ${theme.light.button[type][
+            (inverse && "inverse") || "regular"
+          ].bgColor};
+          border: 1px solid
+            ${theme.light.button[type][(inverse && "inverse") || "regular"]
+              .borderColor};
 
           &:hover {
-            background-color: ${theme.light.button.secondary.regular
-              .hoverBGColor};
-            color: ${theme.light.button.secondary.regular.hoverColor};
-            border-color: ${theme.light.button.secondary.regular
-              .hoverBorderColor};
+            background-color: ${theme.light.button[type][
+              (inverse && "inverse") || "regular"
+            ].hoverBGColor};
+            color: ${theme.light.button[type][
+              (inverse && "inverse") || "regular"
+            ].hoverColor};
+            border-color: ${theme.light.button[type][
+              (inverse && "inverse") || "regular"
+            ].hoverBorderColor};
           }
         `;
       default:
         return css`
-          background-color: transparent;
-          border: 1px solid #333;
+          background-color: ${theme.light.button.default[
+            (inverse && "inverse") || "regular"
+          ].bgColor};
+          border: 1px solid
+            ${theme.light.button.default[(inverse && "inverse") || "regular"]
+              .borderColor};
+          color: ${theme.light.button.default[
+            (inverse && "inverse") || "regular"
+          ].color};
 
           &:hover {
-            background-color: #333;
-            border: 1px solid #333;
-            color: #fff;
+            background-color: ${theme.light.button.default[
+              (inverse && "inverse") || "regular"
+            ].hoverBGColor};
+            border-color: ${theme.light.button.default[
+              (inverse && "inverse") || "regular"
+            ].hoverBorderColor};
+            color: ${theme.light.button.default[
+              (inverse && "inverse") || "regular"
+            ].hoverColor};
           }
         `;
     }
   }}
+  
   ${({ size, theme }) => {
     switch (size) {
       case SM:
@@ -88,11 +100,11 @@ export const ButtonSC = styled.button`
         `;
     }
   }}
-  ${({ isFullWidth }) =>
+  ${({ isFullWidth, as }) =>
     isFullWidth &&
     css`
       display: block;
-      width: 100%;
+      width: ${as === "a" ? "auto" : "100%"};
     `}
 `;
 
@@ -100,6 +112,7 @@ ButtonSC.propTypes = {
   type: PropTypes.oneOf([DEFAULT, PRIMARY, SECONDARY]),
   size: PropTypes.oneOf([SM, MD, LG, XL]),
   isFullWidth: PropTypes.bool,
+  inverse: PropTypes.bool,
 };
 
 /**
@@ -118,6 +131,7 @@ ButtonSC.propTypes = {
  * @param isFullWidth {boolean}
  * @param asAnchor {boolean}
  * @param link {string}
+ * @param inverse {boolean}
  * @return {JSX.Element}
  * @category Components
  */
@@ -128,6 +142,7 @@ const Button = ({
   isFullWidth = false,
   asAnchor = false,
   link = "",
+  inverse = false,
 }) => {
   return (
     <ButtonSC
@@ -136,6 +151,7 @@ const Button = ({
       size={size}
       isFullWidth={isFullWidth}
       href={(asAnchor && link) || ""}
+      inverse={inverse}
     >
       {text}
     </ButtonSC>
@@ -148,5 +164,6 @@ Button.propTypes = {
   isFullWidth: PropTypes.bool,
   asAnchor: PropTypes.bool,
   link: PropTypes.string,
+  inverse: PropTypes.bool,
 };
 export default Button;
