@@ -163,13 +163,9 @@ export const Template = ({
 	/>
 )
 
-export const Default = Template.bind({});
-
-<Preview>
-	<Story name="Default Button">
-		{Default}
-	</Story>
-</Preview>
+<Story name="Default Button">
+	{args => <Button {...args} />}
+</Story>
 
 <ArgsTable story="Default Button" />
 
@@ -184,22 +180,22 @@ export const Default = Template.bind({});
 
 <Canvas>
 	<Story name="Default XL" args={{text: DEFAULT, type: DEFAULT, size: XL}}>
-		{Template.bind({})}
+		{args => <Button {...args} />}
 	</Story>
 	<Story name="Default XL Inverse" args={{text: `inverse`, type: DEFAULT, size: XL, inverse: true}}>
-		{Template.bind({})}
+		{args => <Button {...args} />}
 	</Story>
 	<Story name="Primary LG" args={{text: PRIMARY, type: PRIMARY, size: LG}}>
-		{Template.bind({})}
+		{args => <Button {...args} />}
 	</Story>
 	<Story name="Primary LG Inverse" args={{text: 'inverse', type: PRIMARY, size: LG, inverse: true}}>
-		{Template.bind({})}
+		{args => <Button {...args} />}
 	</Story>
 	<Story name="Secondary SM" args={{text: SECONDARY, type: SECONDARY, size: SM}}>
-		{Template.bind({})}
+		{args => <Button {...args} />}
 	</Story>
 	<Story name="Secondary SM Inverse" args={{text: 'inverse', type: SECONDARY, size: SM, inverse: true}}>
-		{Template.bind({})}
+		{args => <Button {...args} />}
 	</Story>
 </Canvas>
 
