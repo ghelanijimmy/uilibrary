@@ -11,8 +11,8 @@ const AnchorSC = styled(TypographySC)`
   color: ${({ theme, color }) => color || theme.light.colors.primary};
 `;
 AnchorSC.propTypes = {
-  size: PropTypes.oneOf([SM, MD, LG, XL]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT]),
+  size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
+  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string, ""]),
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
 };
@@ -43,7 +43,7 @@ const Anchor = ({
 
 Anchor.propTypes = {
   children: PropTypes.any,
-  size: PropTypes.oneOf([SM, MD, LG, XL]),
+  size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
   color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string]),
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,

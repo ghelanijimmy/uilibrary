@@ -16,8 +16,8 @@ export const ParagraphSC = styled(TypographySC)`
 `;
 
 ParagraphSC.propTypes = {
-  size: PropTypes.oneOf([SM, MD, LG, XL]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT]),
+  size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
+  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string]),
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
   makeBlock: PropTypes.bool,
@@ -49,8 +49,8 @@ const Paragraph = ({
 };
 Paragraph.propTypes = {
   children: PropTypes.any,
-  size: PropTypes.oneOf([SM, MD, LG, XL]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string]),
+  size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
+  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string, ""]),
   asSpan: PropTypes.bool,
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,

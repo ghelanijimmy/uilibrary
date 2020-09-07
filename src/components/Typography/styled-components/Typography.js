@@ -58,8 +58,8 @@ margin-bottom: ${({ theme }) => theme.common.sizing.halfPadding};
     `}
 `;
 TypographySC.propTypes = {
-  size: PropTypes.oneOf([SM, MD, LG, XL]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT]),
+  size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
+  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string, ""]),
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
 };

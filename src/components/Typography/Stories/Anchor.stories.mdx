@@ -1,4 +1,4 @@
-import {Meta, Canvas, Story, ArgsTable, Description, Source, Typeset} from "@storybook/addon-docs/blocks";
+import {Meta, Story, ArgsTable, Description, Source} from "@storybook/addon-docs/blocks";
 import dedent from "ts-dedent";
 import {sizes, colorStyles} from "../../../constants/constants";
 import Anchor from "../Anchor";
@@ -34,14 +34,14 @@ export const DEFAULT = colorStyles.DEFAULT;
 		},
 		children: {
 			name: 'children (Content)',
-			defaultValue: "Default Text",
+			defaultValue: "Default Link",
 			control: "text",
 			table: {
 				type: {
 					summary: "Content",
 					detail: "Any text or html/jsx content can go in here"
 				},
-				defaultValue: "Default Text"
+				defaultValue: "Default Link"
 			}
 		},
 		color: {
@@ -143,55 +143,4 @@ export const DEFAULT = colorStyles.DEFAULT;
 	code={dedent`
 		<Anchor size="" color="">Default Link</Anchor>
 	`}
-/>
-
-## Multiple Anchor components
-
-<Story name="Multiple Anchor">
-	{args => (
-		<div>
-			<Anchor {...args} />
-			<Anchor {...args} />
-		</div>
-	)}
-</Story>
-
-<ArgsTable story="Multiple Anchors" />
-
-<Source
-	language="jsx"
-	code={dedent`
-		<div>
-			<Anchor size="" color="">Default Link</Anchor>
-			<Anchor size="" color="">Default Link</Anchor>
-		</div>
-	`}
-/>
-
-# Anchor Variations
-
-<Canvas>
-	<Story name="Small" args={{size: SM, children: "Default", color: DEFAULT}}>
-		{args => <Anchor {...args} />}
-	</Story>
-	<Story name="Default" args={{size: "", children: 'Primary', color: PRIMARY}}>
-		{args => <Anchor {...args} />}
-	</Story>
-	<Story name="Medium" args={{size: MD, children: 'Secondary', color: SECONDARY}}>
-		{args => <Anchor {...args} />}
-	</Story>
-	<Story name="Large" args={{size: LG, children: 'Large', color: '#ededed'}}>
-		{args => <Anchor {...args} />}
-	</Story>
-	<Story name="Extra Large" args={{size: XL, children: 'Extra Large', color: 'pink'}}>
-		{args => <Anchor {...args} />}
-	</Story>
-</Canvas>
-
-## Typeset
-<p>&nbsp;</p>
-
-<Typeset
-	fontSizes={['.875em', '1em', '1.25em', '1.5em', '2em']}
-	sampleText="Some Sample Text"
 />
