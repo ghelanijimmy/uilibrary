@@ -115,62 +115,6 @@ export const DEFAULT = colorStyles.DEFAULT;
 	}}
 />
 
-export const Template = ({
-	size,
-	children,
-	color,
-	asSpan,
-	displayInline,
-	makeInlineBlock,
-	makeBlock
-}) => (
-	<Paragraph
-		size={size}
-		color={color}
-		asSpan={asSpan}
-		displayInline={displayInline}
-		makeInlineBlock={makeInlineBlock}
-		makeBlock={makeBlock}
-	>
-		{children}
-	</Paragraph>
-);
-
-export const MultipleTemplate = ({
-	 size,
-	 color,
-	 asSpan,
-	 displayInline,
-	 makeInlineBlock,
-	 makeBlock
-}) => (
-	<>
-		<Paragraph
-			size={size}
-			color={color}
-			asSpan={asSpan}
-			displayInline={displayInline}
-			makeInlineBlock={makeInlineBlock}
-			makeBlock={makeBlock}
-		>
-			Text One
-		</Paragraph>
-		<Paragraph
-			size={size}
-			color={color}
-			asSpan={asSpan}
-			displayInline={displayInline}
-			makeInlineBlock={makeInlineBlock}
-			makeBlock={makeBlock}
-		>
-			Text Two
-		</Paragraph>
-	</>
-);
-
-export const DefaultParagraph = Template.bind({});
-export const MultipleParagraphs = MultipleTemplate.bind({});
-
 # Typography
 ### Outside of `Descripton` tag
 
@@ -184,7 +128,7 @@ export const MultipleParagraphs = MultipleTemplate.bind({});
 ## Single Paragraph component
 
 <Story name="Default Text">
-	{DefaultParagraph}
+	{args => <Paragraph {...args} />}
 </Story>
 
 <ArgsTable story="Default Text" />
@@ -199,7 +143,12 @@ export const MultipleParagraphs = MultipleTemplate.bind({});
 ## Multiple Paragraph components
 
 <Story name="Multiple Paragraphs">
-	{MultipleParagraphs}
+	{args => (
+		<div>
+			<Paragraph {...args} />
+			<Paragraph {...args} />
+		</div>
+	)}
 </Story>
 
 <ArgsTable story="Multiple Paragraphs" />
@@ -218,19 +167,19 @@ export const MultipleParagraphs = MultipleTemplate.bind({});
 
 <Canvas>
 	<Story name="Small" args={{size: SM, children: "Default", color: DEFAULT}}>
-		{Template.bind({})}
+		{args => <Paragraph {...args} />}
 	</Story>
 	<Story name="Default" args={{size: "", children: 'Primary', color: PRIMARY}}>
-		{Template.bind({})}
+		{args => <Paragraph {...args} />}
 	</Story>
 	<Story name="Medium" args={{size: MD, children: 'Secondary', color: SECONDARY}}>
-		{Template.bind({})}
+		{args => <Paragraph {...args} />}
 	</Story>
 	<Story name="Large" args={{size: LG, children: 'Large', color: '#ededed'}}>
-		{Template.bind({})}
+		{args => <Paragraph {...args} />}
 	</Story>
 	<Story name="Extra Large" args={{size: XL, children: 'Extra Large', color: 'pink'}}>
-		{Template.bind({})}
+		{args => <Paragraph {...args} />}
 	</Story>
 </Canvas>
 
