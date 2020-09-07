@@ -116,6 +116,20 @@ export const XL = sizes.XL;
 			  },
 			  defaultValue: ''
 		  }
+	  },
+	  inverse: {
+		  name: 'inverse',
+		  control: 'boolean',
+		  type: 'boolean',
+		  defaultValue: false,
+		  description: "Inverse of button type",
+		  table: {
+			  type: {
+				  summary: "Inverse of type",
+				  detail: "Render inverse colors of selected type"
+			  },
+			  defaultValue: false
+		  }
 	  }
   }}
 />
@@ -135,7 +149,8 @@ export const Template = ({
 	size,
 	isFullWidth,
 	link,
-	asAnchor
+	asAnchor,
+	inverse
 }) => (
 	<Button
 		text={text}
@@ -144,16 +159,13 @@ export const Template = ({
 		isFullWidth={isFullWidth}
 		link={link}
 		asAnchor={asAnchor}
+		inverse={inverse}
 	/>
 )
 
-export const Default = Template.bind({});
-
-<Preview>
-	<Story name="Default Button">
-		{Default}
-	</Story>
-</Preview>
+<Story name="Default Button">
+	{args => <Button {...args} />}
+</Story>
 
 <ArgsTable story="Default Button" />
 
@@ -167,14 +179,23 @@ export const Default = Template.bind({});
 # Button Variations
 
 <Canvas>
-	<Story name="Default XL" args={{text: SECONDARY, type: DEFAULT, size: XL}}>
-		{Template.bind({})}
+	<Story name="Default XL" args={{text: DEFAULT, type: DEFAULT, size: XL}}>
+		{args => <Button {...args} />}
+	</Story>
+	<Story name="Default XL Inverse" args={{text: `inverse`, type: DEFAULT, size: XL, inverse: true}}>
+		{args => <Button {...args} />}
 	</Story>
 	<Story name="Primary LG" args={{text: PRIMARY, type: PRIMARY, size: LG}}>
-		{Template.bind({})}
+		{args => <Button {...args} />}
+	</Story>
+	<Story name="Primary LG Inverse" args={{text: 'inverse', type: PRIMARY, size: LG, inverse: true}}>
+		{args => <Button {...args} />}
 	</Story>
 	<Story name="Secondary SM" args={{text: SECONDARY, type: SECONDARY, size: SM}}>
-		{Template.bind({})}
+		{args => <Button {...args} />}
+	</Story>
+	<Story name="Secondary SM Inverse" args={{text: 'inverse', type: SECONDARY, size: SM, inverse: true}}>
+		{args => <Button {...args} />}
 	</Story>
 </Canvas>
 
@@ -186,7 +207,7 @@ export const Default = Template.bind({});
 		title="Button BG Colors"
 		subtitle="Default state"
 		colors={[
-			'#fff',
+			'#333',
 			'#a00000',
 			'#0255d7'
 		]} />
@@ -194,7 +215,7 @@ export const Default = Template.bind({});
 		title="Button BG Colors"
 		subtitle="Hover state"
 		colors={[
-			'#333',
+			'#1d1d1d',
 			'#ba1e1e',
 			'#1d6de2'
 		]} />

@@ -45,6 +45,11 @@ export default {
       control: "text",
       defaultValue: "",
     },
+    inverse: {
+      type: "boolean",
+      control: "boolean",
+      defaultValue: false,
+    },
   },
   parameters: {
     docs: {
@@ -55,7 +60,15 @@ export default {
   },
 };
 
-const Template = ({ text, type, size, isFullWidth, asAnchor, link }) => (
+const Template = ({
+  text,
+  type,
+  size,
+  isFullWidth,
+  asAnchor,
+  link,
+  inverse,
+}) => (
   <Button
     text={text}
     type={type}
@@ -63,6 +76,7 @@ const Template = ({ text, type, size, isFullWidth, asAnchor, link }) => (
     isFullWidth={isFullWidth}
     asAnchor={asAnchor}
     link={link}
+    inverse={inverse}
   />
 );
 
