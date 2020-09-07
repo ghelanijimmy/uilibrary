@@ -9,12 +9,12 @@ import {
 	Description,
 } from "@storybook/addon-docs/blocks";
 import Button from "../Button";
-import {buttonTypes, sizes} from "../../../constants/constants";
+import {colorStyles, sizes} from "../../../constants/constants";
 import dedent from "ts-dedent";
 
-export const PRIMARY = buttonTypes.PRIMARY;
-export const SECONDARY = buttonTypes.SECONDARY;
-export const DEFAULT = buttonTypes.DEFAULT;
+export const PRIMARY = colorStyles.PRIMARY;
+export const SECONDARY = colorStyles.SECONDARY;
+export const DEFAULT = colorStyles.DEFAULT;
 export const SM = sizes.SM;
 export const MD = sizes.MD;
 export const LG = sizes.LG;
@@ -149,9 +149,11 @@ export const Template = ({
 
 export const Default = Template.bind({});
 
-<Story name="Default Button">
-  {Default}
-</Story>
+<Preview>
+	<Story name="Default Button">
+		{Default}
+	</Story>
+</Preview>
 
 <ArgsTable story="Default Button" />
 

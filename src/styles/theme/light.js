@@ -1,8 +1,9 @@
 import { buttonLight } from "./common/button";
+import { colorsLight } from "./common/colors";
 
 /**
- * Light Theme Styles
- * @type {{button: {secondary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}, primary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}}}}
+ * LIght theme styles
+ * @type {{button: {secondary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}, primary: {inverse: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}, regular: {borderColor: string, bgColor: string, color: string, hoverBorderColor: string, hoverColor: string, hoverBGColor: string}}}, colors: {secondary: string, primaryLighter1: string, secondaryLighter1: string, body: string, primary: string}}}
  * @category Styles
  */
 export const light = {
@@ -13,5 +14,8 @@ export const light = {
     secondary: {
       ...buttonLight.secondary,
     },
+  },
+  colors: {
+    ...colorsLight,
   },
 };

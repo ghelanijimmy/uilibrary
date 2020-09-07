@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "../Button";
-import { buttonTypes, sizes } from "../../../constants/constants";
+import { colorStyles, sizes } from "../../../constants/constants";
 
-const { PRIMARY, SECONDARY, DEFAULT } = buttonTypes;
+const { PRIMARY, SECONDARY, DEFAULT } = colorStyles;
 const { SM, MD, LG, XL } = sizes;
 
 export default {

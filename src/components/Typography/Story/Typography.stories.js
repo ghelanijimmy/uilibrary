@@ -21,11 +21,51 @@ export default {
       control: "text",
       defaultValue: "Default Text",
     },
+    color: {
+      type: "string",
+      control: "color",
+      defaultValue: "",
+    },
+    asSpan: {
+      type: "boolean",
+      control: "boolean",
+      defaultValue: false,
+    },
+    displayInline: {
+      type: "boolean",
+      control: "boolean",
+      defaultValue: false,
+    },
+    makeInlineBlock: {
+      type: "boolean",
+      control: "boolean",
+      defaultValue: false,
+    },
+    makeBlock: {
+      type: "boolean",
+      control: "boolean",
+      defaultValue: false,
+    },
   },
 };
 
-const TypographyTemplate = ({ size, children }) => (
-  <Paragraph size={size}>{children}</Paragraph>
+const TypographyTemplate = ({
+  size,
+  children,
+  color,
+  asSpan,
+  displayInline,
+  makeInlineBlock,
+}) => (
+  <Paragraph
+    size={size}
+    color={color}
+    asSpan={asSpan}
+    displayInline={displayInline}
+    makeInlineBlock={makeInlineBlock}
+  >
+    {children}
+  </Paragraph>
 );
 
 export const DefaultParagraph = TypographyTemplate.bind({});
