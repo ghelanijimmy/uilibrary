@@ -159,7 +159,7 @@ const Button = ({
 };
 Button.propTypes = {
   text: PropTypes.string,
-  type: PropTypes.oneOf(["default", "primary", "secondary"]),
+  type: PropTypes.oneOf([DEFAULT, PRIMARY, SECONDARY]),
   size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   isFullWidth: PropTypes.bool,
   asAnchor: PropTypes.bool,

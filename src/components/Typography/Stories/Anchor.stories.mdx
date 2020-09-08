@@ -1,0 +1,146 @@
+import {Meta, Story, ArgsTable, Description, Source} from "@storybook/addon-docs/blocks";
+import dedent from "ts-dedent";
+import {sizes, colorStyles} from "../../../constants/constants";
+import Anchor from "../Anchor";
+
+export const SM = sizes.SM;
+export const MD = sizes.MD;
+export const LG = sizes.LG;
+export const XL = sizes.XL;
+export const PRIMARY = colorStyles.PRIMARY;
+export const SECONDARY = colorStyles.SECONDARY;
+export const DEFAULT = colorStyles.DEFAULT;
+
+<Meta
+	title="Typography/Anchor/MDX"
+	component={Anchor}
+	argTypes={{
+		size: {
+			name: 'size',
+			defaultValue: MD,
+			control: {
+				type: 'inline-radio',
+				options: [SM, MD, LG, XL]
+			},
+			table: {
+				type: {
+					summary: "Anchor size",
+					detail: "Render different font sizes for the anchor"
+				},
+				defaultValue: {
+					summary: 'blank for default'
+				}
+			}
+		},
+		children: {
+			name: 'children (Content)',
+			defaultValue: "Default Link",
+			control: "text",
+			table: {
+				type: {
+					summary: "Content",
+					detail: "Any text or html/jsx content can go in here"
+				},
+				defaultValue: "Default Link"
+			}
+		},
+		color: {
+			name: 'color',
+			defaultValue: '',
+			control: 'color',
+			table: {
+				type: {
+					summary: "Text color",
+					detail: "Options include primary, secondary, default or color value"
+				},
+				defaultValue: {
+					summary: ''
+				}
+			}
+		},
+		displayInline: {
+			name: 'displayInline',
+			defaultValue: false,
+			control: 'boolean',
+			table: {
+				type: {
+					summary: "Make inline",
+					detail: "Change CSS display to inline"
+				},
+				defaultValue: {
+					summary: false
+				}
+			}
+		},
+		makeInlineBlock: {
+			name: 'makeInlineBlock',
+			defaultValue: false,
+			control: 'boolean',
+			table: {
+				type: {
+					summary: "Make inline block",
+					detail: "If displayInline is true, change CSS display to inline-block"
+				},
+				defaultValue: {
+					summary: false
+				}
+			}
+		},
+		hrefLink: {
+			name: "hrefLink",
+			defaultValue: "",
+			control: "text",
+			table: {
+				type: {
+					summary: "HREF Value",
+					detail: "HREF URL value goes here (can include tel, or sms)"
+				},
+				defaultValue: {
+					summary: ""
+				}
+			}
+		},
+		hrefTarget: {
+			name: "hrefLink",
+			defaultValue: "_blank",
+			control: {
+				type: "inline-radio",
+				options: ["_blank", "_self", "_parent", "_top"]
+			},
+			table: {
+				type: {
+					summary: "HREF Target",
+					detail: "HREF Target value goes here"
+				},
+				defaultValue: {
+					summary: "_blank"
+				}
+			}
+		},
+	}}
+/>
+
+# Anchor
+### Outside of `Descripton` tag
+
+<Description markdown={dedent`
+	<p>&nbsp;</p>
+	# Description inside <code>Description</code> tag
+	### Some markdown
+	<p>&nbsp;</p>
+`} />
+
+## Single Anchor component
+
+<Story name="Default Anchor">
+	{args => <Anchor {...args} />}
+</Story>
+
+<ArgsTable story="Default Anchor" />
+
+<Source
+	language="jsx"
+	code={dedent`
+		<Anchor size="" color="">Default Link</Anchor>
+	`}
+/>

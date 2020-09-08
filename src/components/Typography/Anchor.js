@@ -1,61 +1,53 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { colorStyles, sizes } from "../../constants/constants";
+import styled from "styled-components";
 import TypographySC from "./styled-components/Typography";
+import { colorStyles, sizes } from "../../constants/constants";
 import returnValidColor from "../../helpers/returnValidColor";
 
 const { SM, MD, LG, XL } = sizes;
 const { DEFAULT } = colorStyles;
 
-export const ParagraphSC = styled(TypographySC)`
-  ${({ makeBlock }) =>
-    makeBlock &&
-    css`
-      display: block;
-    `}
-`;
-
-ParagraphSC.propTypes = {
+const AnchorSC = styled(TypographySC)``;
+AnchorSC.propTypes = {
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
   color: PropTypes.string,
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
-  makeBlock: PropTypes.bool,
 };
 
-const Paragraph = ({
+const Anchor = ({
   children = null,
   size = MD,
   color = DEFAULT,
-  asSpan = false,
   displayInline = false,
   makeInlineBlock = false,
-  makeBlock = false,
+  hrefLink = "",
+  hrefTarget = "_blank",
 }) => {
   return (
-    <ParagraphSC
-      size={size}
+    <AnchorSC
+      makeInlineBlock={makeInlineBlock}
+      displayInline={displayInline}
       color={(returnValidColor(color) && color) || "#333"}
-      as={(asSpan && "span") || "p"}
-      displayInline={!makeBlock && (displayInline || asSpan)}
-      makeInlineBlock={
-        (displayInline || asSpan) && !makeBlock && makeInlineBlock
-      }
-      makeBlock={makeBlock}
+      size={size}
+      as={"a"}
+      href={hrefLink}
+      target={hrefTarget}
     >
       {children}
-    </ParagraphSC>
+    </AnchorSC>
   );
 };
-Paragraph.propTypes = {
+
+Anchor.propTypes = {
   children: PropTypes.any,
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
   color: PropTypes.string,
-  asSpan: PropTypes.bool,
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
-  makeBlock: PropTypes.bool,
+  hrefLink: PropTypes.string,
+  hrefTarget: PropTypes.oneOf(["_blank", "_self", "_parent", "_top"]),
 };
 
-export default Paragraph;
+export default Anchor;
