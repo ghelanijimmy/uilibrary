@@ -3,7 +3,7 @@ import { colorStyles, sizes } from "../../../constants/constants";
 import PropTypes from "prop-types";
 
 const { SM, MD, LG, XL } = sizes;
-const { DEFAULT, PRIMARY, SECONDARY } = colorStyles;
+const { PRIMARY, SECONDARY } = colorStyles;
 
 const TypographySC = styled.p`
 margin-bottom: ${({ theme }) => theme.common.sizing.halfPadding};
@@ -59,7 +59,7 @@ margin-bottom: ${({ theme }) => theme.common.sizing.halfPadding};
 `;
 TypographySC.propTypes = {
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string, ""]),
+  color: PropTypes.string,
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
 };

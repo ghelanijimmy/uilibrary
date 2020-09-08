@@ -3,16 +3,17 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import TypographySC from "./styled-components/Typography";
 import { colorStyles, sizes } from "../../constants/constants";
+import returnValidColor from "../../helpers/returnValidColor";
 
 const { SM, MD, LG, XL } = sizes;
-const { DEFAULT, PRIMARY, SECONDARY } = colorStyles;
+const { DEFAULT } = colorStyles;
 
 const AnchorSC = styled(TypographySC)`
   color: ${({ theme, color }) => color || theme.light.colors.primary};
 `;
 AnchorSC.propTypes = {
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string, ""]),
+  color: PropTypes.string,
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
 };
@@ -30,7 +31,7 @@ const Anchor = ({
     <AnchorSC
       makeInlineBlock={makeInlineBlock}
       displayInline={displayInline}
-      color={color}
+      color={(returnValidColor(color) && color) || DEFAULT}
       size={size}
       as={"a"}
       href={hrefLink}
@@ -44,7 +45,7 @@ const Anchor = ({
 Anchor.propTypes = {
   children: PropTypes.any,
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string]),
+  color: PropTypes.string,
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
   hrefLink: PropTypes.string,

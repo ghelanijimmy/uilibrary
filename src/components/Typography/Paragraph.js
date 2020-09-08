@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { colorStyles, sizes } from "../../constants/constants";
 import TypographySC from "./styled-components/Typography";
+import returnValidColor from "../../helpers/returnValidColor";
 
 const { SM, MD, LG, XL } = sizes;
-const { PRIMARY, DEFAULT, SECONDARY } = colorStyles;
+const { DEFAULT } = colorStyles;
 
 export const ParagraphSC = styled(TypographySC)`
   ${({ makeBlock }) =>
@@ -17,7 +18,7 @@ export const ParagraphSC = styled(TypographySC)`
 
 ParagraphSC.propTypes = {
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string]),
+  color: PropTypes.string,
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
   makeBlock: PropTypes.bool,
@@ -35,7 +36,7 @@ const Paragraph = ({
   return (
     <ParagraphSC
       size={size}
-      color={color}
+      color={(returnValidColor(color) && color) || DEFAULT}
       as={(asSpan && "span") || "p"}
       displayInline={!makeBlock && (displayInline || asSpan)}
       makeInlineBlock={
@@ -50,7 +51,7 @@ const Paragraph = ({
 Paragraph.propTypes = {
   children: PropTypes.any,
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
-  color: PropTypes.oneOf([PRIMARY, SECONDARY, DEFAULT, PropTypes.string, ""]),
+  color: PropTypes.string,
   asSpan: PropTypes.bool,
   displayInline: PropTypes.bool,
   makeInlineBlock: PropTypes.bool,
