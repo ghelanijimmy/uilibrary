@@ -36,7 +36,7 @@ const Paragraph = ({
   return (
     <ParagraphSC
       size={size}
-      color={(returnValidColor(color) && color) || DEFAULT}
+      color={(returnValidColor(color) && color) || "#333"}
       as={(asSpan && "span") || "p"}
       displayInline={!makeBlock && (displayInline || asSpan)}
       makeInlineBlock={

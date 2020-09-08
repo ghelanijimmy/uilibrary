@@ -3,7 +3,7 @@ import { colorStyles, sizes } from "../../../constants/constants";
 import PropTypes from "prop-types";
 
 const { SM, MD, LG, XL } = sizes;
-const { PRIMARY, SECONDARY } = colorStyles;
+const { DEFAULT, PRIMARY, SECONDARY } = colorStyles;
 
 const TypographySC = styled.p`
 margin-bottom: ${({ theme }) => theme.common.sizing.halfPadding};
@@ -38,14 +38,30 @@ margin-bottom: ${({ theme }) => theme.common.sizing.halfPadding};
       case PRIMARY:
         return css`
           color: ${theme.light.colors.primary};
+          &:visited {
+            color: ${theme.light.colors.primary};
+          }
         `;
       case SECONDARY:
         return css`
           color: ${theme.light.colors.secondary};
+          &:visited {
+            color: ${theme.light.colors.secondary};
+          }
+        `;
+      case DEFAULT:
+        return css`
+          color: ${theme.light.colors.body};
+          &:visited {
+            color: ${theme.light.colors.body};
+          }
         `;
       default:
         return css`
           color: ${color || theme.light.colors.body};
+          &:visited {
+            color: ${color || theme.light.colors.body};
+          }
         `;
     }
   }}

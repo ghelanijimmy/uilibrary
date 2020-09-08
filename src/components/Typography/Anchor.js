@@ -8,9 +8,7 @@ import returnValidColor from "../../helpers/returnValidColor";
 const { SM, MD, LG, XL } = sizes;
 const { DEFAULT } = colorStyles;
 
-const AnchorSC = styled(TypographySC)`
-  color: ${({ theme, color }) => color || theme.light.colors.primary};
-`;
+const AnchorSC = styled(TypographySC)``;
 AnchorSC.propTypes = {
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
   color: PropTypes.string,
@@ -31,7 +29,7 @@ const Anchor = ({
     <AnchorSC
       makeInlineBlock={makeInlineBlock}
       displayInline={displayInline}
-      color={(returnValidColor(color) && color) || DEFAULT}
+      color={(returnValidColor(color) && color) || "#333"}
       size={size}
       as={"a"}
       href={hrefLink}
