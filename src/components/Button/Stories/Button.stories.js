@@ -50,6 +50,9 @@ export default {
       control: "boolean",
       defaultValue: false,
     },
+    handleClick: {
+      action: "handleClick called",
+    },
   },
   parameters: {
     docs: {
@@ -68,6 +71,7 @@ const Template = ({
   asAnchor,
   link,
   inverse,
+  handleClick,
 }) => (
   <Button
     text={text}
@@ -77,6 +81,7 @@ const Template = ({
     asAnchor={asAnchor}
     link={link}
     inverse={inverse}
+    handleClick={handleClick}
   />
 );
 

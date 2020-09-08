@@ -132,6 +132,7 @@ ButtonSC.propTypes = {
  * @param asAnchor {boolean}
  * @param link {string}
  * @param inverse {boolean}
+ * @param handleClick {function}
  * @return {JSX.Element}
  * @category Components
  */
@@ -143,6 +144,7 @@ const Button = ({
   asAnchor = false,
   link = "",
   inverse = false,
+  handleClick = () => null,
 }) => {
   return (
     <ButtonSC
@@ -152,6 +154,7 @@ const Button = ({
       isFullWidth={isFullWidth}
       href={(asAnchor && link) || ""}
       inverse={inverse}
+      onClick={handleClick}
     >
       {text}
     </ButtonSC>
@@ -165,5 +168,6 @@ Button.propTypes = {
   asAnchor: PropTypes.bool,
   link: PropTypes.string,
   inverse: PropTypes.bool,
+  handleClick: PropTypes.func,
 };
 export default Button;
