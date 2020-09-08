@@ -1,28 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
 import { colorStyles, sizes } from "../../constants/constants";
-import TypographySC from "./styled-components/Typography";
 import returnValidColor from "../../helpers/returnValidColor";
+import { ParagraphSC } from "./styled-components/ParagraphSC";
 
 const { SM, MD, LG, XL } = sizes;
 const { DEFAULT } = colorStyles;
-
-export const ParagraphSC = styled(TypographySC)`
-  ${({ makeBlock }) =>
-    makeBlock &&
-    css`
-      display: block;
-    `}
-`;
-
-ParagraphSC.propTypes = {
-  size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
-  color: PropTypes.string,
-  displayInline: PropTypes.bool,
-  makeInlineBlock: PropTypes.bool,
-  makeBlock: PropTypes.bool,
-};
 
 const Paragraph = ({
   children = null,
