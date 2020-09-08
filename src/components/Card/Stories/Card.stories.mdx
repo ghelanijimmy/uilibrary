@@ -14,7 +14,20 @@ export const MD = sizes.MD;
 	title="Cards/MDX"
 	component={Card}
 	subcomponents={{Paragraph, Button}}
-	argTypes={{}}
+	argTypes={{
+		displayFlex: {
+			name: 'displayFlex',
+			control: 'boolean',
+			defaultValue: false,
+			table: {
+				type: {
+					summary: "Display flex",
+					detail: "Change component to display flex"
+				},
+				defaultValue: false
+			}
+		}
+	}}
 />
 
 # Card
@@ -30,8 +43,8 @@ export const MD = sizes.MD;
 	`}
 />
 
-export const Template = ({button, paragraph, card}) => (
-	<Card {...card}>
+export const Template = ({button, paragraph, ...args}) => (
+	<Card {...args}>
 		<Paragraph {...paragraph}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, delectus exercitationem illum minus molestiae nobis officia pariatur provident quas saepe.</Paragraph>
 		<Button {...button} />
 	</Card>
@@ -41,7 +54,6 @@ export const DefaultCard = Template.bind({});
 DefaultCard.args = {
 	button: {...DefaultButton.args},
 	paragraph: {...DefaultParagraph.args},
-	card: {}
 }
 
 <Story name="Default Card">{DefaultCard}</Story>

@@ -9,14 +9,17 @@ export default {
   title: "Cards/CSF",
   component: Card,
   subcomponents: { Paragraph, Button },
+  argTypes: {
+    displayFlex: {
+      type: "boolean",
+      control: "boolean",
+      defaultValue: false,
+    },
+  },
 };
 
-const Template = ({ button, paragraph, card }) => (
-  <Card {...card}>
-    <Paragraph {...paragraph}>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias atque
-      autem ducimus ea ex hic iste libero quae sint.
-    </Paragraph>
+const Template = ({ button, paragraph, ...args }) => (
+  <Card {...args}>
     <Paragraph {...paragraph}>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias atque
       autem ducimus ea ex hic iste libero quae sint.
@@ -29,5 +32,4 @@ export const DefaultCard = Template.bind({});
 DefaultCard.args = {
   button: { ...DefaultButton.args },
   paragraph: { ...DefaultParagraph.args },
-  card: {},
 };
