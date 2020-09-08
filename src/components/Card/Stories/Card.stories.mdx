@@ -1,0 +1,63 @@
+import {Meta, Story, Canvas, Description, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Card from "../Card";
+import Paragraph from "../../Typography/Paragraph";
+import Button from "../../Button/Button";
+import dedent from "ts-dedent";
+import {DefaultButton} from "../../Button/Stories/Button.stories.mdx";
+import {DefaultParagraph} from "../../Typography/Stories/Paragraph.stories.mdx";
+import {colorStyles, sizes} from "../../../constants/constants";
+
+export const PRIMARY = colorStyles.PRIMARY;
+export const MD = sizes.MD;
+
+<Meta
+	title="Cards/MDX"
+	component={Card}
+	subcomponents={{Paragraph, Button}}
+	argTypes={{}}
+/>
+
+# Card
+
+### Outside of `Description` tag
+
+<Description
+	markdown={dedent`
+		<p>&nbsp;</p>
+		# Description inside <code>Description</code> tag
+		### Some markdown
+		<p>&nbsp;</p>
+	`}
+/>
+
+export const Template = ({button, paragraph, card}) => (
+	<Card {...card}>
+		<Paragraph {...paragraph}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, delectus exercitationem illum minus molestiae nobis officia pariatur provident quas saepe.</Paragraph>
+		<Button {...button} />
+	</Card>
+)
+
+export const DefaultCard = Template.bind({});
+DefaultCard.args = {
+	button: {...DefaultButton.args},
+	paragraph: {...DefaultParagraph.args},
+	card: {}
+}
+
+<Story name="Default Card">{DefaultCard}</Story>
+
+<p>&nbsp;</p>
+
+<ArgsTable story="Default Card" />
+
+<Source
+	language="jsx"
+	code={dedent`
+		<Card>
+			<Paragraph size={MD} color="" asSpan=false displayInline=false makeInlineBlock=false makeBlock=false>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem in modi quaerat quia totam voluptatum. Dolores ducimus harum similique. Error?
+			</Paragraph>
+			<Button text="Default Button" type={PRIMARY} size={MD} isFullWidth=false asAnchor=false link="" inverse=false displayBlock=false/>
+		</Card>
+	`}
+/>

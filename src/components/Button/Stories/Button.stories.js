@@ -53,6 +53,11 @@ export default {
     handleClick: {
       action: "handleClick called",
     },
+    displayBlock: {
+      type: "boolean",
+      control: "boolean",
+      defaultValue: false,
+    },
   },
   parameters: {
     docs: {
@@ -72,6 +77,7 @@ const Template = ({
   link,
   inverse,
   handleClick,
+  displayBlock,
 }) => (
   <Button
     text={text}
@@ -82,23 +88,34 @@ const Template = ({
     link={link}
     inverse={inverse}
     handleClick={handleClick}
+    displayBlock={displayBlock}
   />
 );
 
-export const Default = Template.bind({});
-Default.parameters = {
+export const DefaultButton = Template.bind({});
+DefaultButton.parameters = {
   docs: {
     description: {
       story: "Default Button",
     },
   },
 };
+DefaultButton.args = {
+  text: "Default Button",
+  type: PRIMARY,
+  size: MD,
+  isFullWidth: false,
+  asAnchor: false,
+  link: "",
+  inverse: false,
+  displayBlock: false,
+};
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const PrimaryButton = Template.bind({});
+PrimaryButton.args = {
   type: PRIMARY,
 };
-Primary.parameters = {
+PrimaryButton.parameters = {
   docs: {
     description: {
       story: "# Primary Button Description\n###More markdown",
@@ -106,11 +123,11 @@ Primary.parameters = {
   },
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
+export const SecondaryButton = Template.bind({});
+SecondaryButton.args = {
   type: SECONDARY,
 };
-Secondary.parameters = {
+SecondaryButton.parameters = {
   docs: {
     description: {
       story: "# Secondary Button Description\n###More markdown",

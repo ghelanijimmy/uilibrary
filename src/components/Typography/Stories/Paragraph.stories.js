@@ -71,6 +71,14 @@ const ParagraphTemplate = ({
 );
 
 export const DefaultParagraph = ParagraphTemplate.bind({});
+DefaultParagraph.args = {
+  size: MD,
+  color: "",
+  asSpan: false,
+  displayInline: false,
+  makeInlineBlock: false,
+  makeBlock: false,
+};
 
 export const SmallParagraph = ParagraphTemplate.bind({});
 SmallParagraph.args = {

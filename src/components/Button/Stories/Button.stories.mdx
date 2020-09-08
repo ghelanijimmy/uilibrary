@@ -1,15 +1,15 @@
 import {
-	Meta,
-	Story,
-	Canvas,
-	ArgsTable,
-	Source,
-	ColorPalette,
-	ColorItem,
-	Description,
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Source,
+  ColorPalette,
+  ColorItem,
+  Description,
 } from "@storybook/addon-docs/blocks";
 import Button from "../Button";
-import {colorStyles, sizes} from "../../../constants/constants";
+import { colorStyles, sizes } from "../../../constants/constants";
 import dedent from "ts-dedent";
 
 export const PRIMARY = colorStyles.PRIMARY;
@@ -29,7 +29,7 @@ export const XL = sizes.XL;
       type: "string",
       control: "text",
       description: "Button Text",
-	    defaultValue: "default button text",
+      defaultValue: "default button text",
       table: {
         type: {
           summary: "Button Text",
@@ -46,7 +46,7 @@ export const XL = sizes.XL;
         type: "inline-radio",
         options: [DEFAULT, PRIMARY, SECONDARY],
       },
-	    defaultValue: DEFAULT,
+      defaultValue: DEFAULT,
       description: "Button Type",
       table: {
         type: {
@@ -58,134 +58,165 @@ export const XL = sizes.XL;
         },
       },
     },
-	  size: {
-		  name: "size",
-		  control: {
-			  type: 'inline-radio',
-			  options: [SM, MD, LG, XL]
-		  },
-		  defaultValue: MD,
-		  description: "Button size",
-		  table: {
-			  type: {
-				  summary: "Button size",
-				  detail: "Button padding changes size of button"
-			  },
-			  defaultValue: {
-				  summary: MD
-			  }
-		  }
-	  },
-	  isFullWidth: {
-		  name: 'isFullWidth',
-		  control: {
-			  type: 'boolean'
-		  },
-		  defaultValue: false,
-		  description: "Make button full width to parent container",
-		  table: {
-			  type: {
-				  summary: "Make button full width to parent container",
-				  detail: "Either inline or full width button"
-			  },
-			  defaultValue: false
-		  }
-	  },
-	  asAnchor: {
-		  name: 'asAnchor',
-		  control: 'boolean',
-		  defaultValue: false,
-		  description: 'Render button as Anchor tag',
-		  table: {
-			  type: {
-				  summary: "Render as button",
-				  detail: "Use styled-components 'as' prop to render button as anchoor"
-			  },
-			  defaultValue: false
-		  }
-	  },
-	  link: {
-		  name: 'link',
-		  control: 'text',
-		  defaultValue: '',
-		  description: "HREF for button rendered as anchor",
-		  table: {
-			  type: {
-				  summary: "HREF for anchor",
-				  detail: "If button is rendered as anchor, href attribute will be set"
-			  },
-			  defaultValue: ''
-		  }
-	  },
-	  inverse: {
-		  name: 'inverse',
-		  control: 'boolean',
-		  type: 'boolean',
-		  defaultValue: false,
-		  description: "Inverse of button type",
-		  table: {
-			  type: {
-				  summary: "Inverse of type",
-				  detail: "Render inverse colors of selected type"
-			  },
-			  defaultValue: false
-		  }
-	  },
-	  handleClick: {
-		  name: 'handleClick',
-		  control: null,
-		  type: 'function',
-		  action: 'handleClick called',
-		  description: "Button click handler",
-		  table: {
-			  type: {
-				  summary: "onClick Handler for button",
-				  detail: "Handle the button onClick mouse event"
-			  },
-			  defaultValue: ()=>null
-		  }
-	  }
+    size: {
+      name: "size",
+      control: {
+        type: "inline-radio",
+        options: [SM, MD, LG, XL],
+      },
+      defaultValue: MD,
+      description: "Button size",
+      table: {
+        type: {
+          summary: "Button size",
+          detail: "Button padding changes size of button",
+        },
+        defaultValue: {
+          summary: MD,
+        },
+      },
+    },
+    isFullWidth: {
+      name: "isFullWidth",
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+      description: "Make button full width to parent container",
+      table: {
+        type: {
+          summary: "Make button full width to parent container",
+          detail: "Either inline or full width button",
+        },
+        defaultValue: false,
+      },
+    },
+    asAnchor: {
+      name: "asAnchor",
+      control: "boolean",
+      defaultValue: false,
+      description: "Render button as Anchor tag",
+      table: {
+        type: {
+          summary: "Render as button",
+          detail: "Use styled-components 'as' prop to render button as anchoor",
+        },
+        defaultValue: false,
+      },
+    },
+    link: {
+      name: "link",
+      control: "text",
+      defaultValue: "",
+      description: "HREF for button rendered as anchor",
+      table: {
+        type: {
+          summary: "HREF for anchor",
+          detail: "If button is rendered as anchor, href attribute will be set",
+        },
+        defaultValue: "",
+      },
+    },
+    inverse: {
+      name: "inverse",
+      control: "boolean",
+      type: "boolean",
+      defaultValue: false,
+      description: "Inverse of button type",
+      table: {
+        type: {
+          summary: "Inverse of type",
+          detail: "Render inverse colors of selected type",
+        },
+        defaultValue: false,
+      },
+    },
+    handleClick: {
+      name: "handleClick",
+      control: null,
+      type: "function",
+      action: "handleClick called",
+      description: "Button click handler",
+      table: {
+        type: {
+          summary: "onClick Handler for button",
+          detail: "Handle the button onClick mouse event",
+        },
+        defaultValue: () => null,
+      },
+    },
+    displayBlock: {
+      name: "displayBlock",
+      control: "boolean",
+      type: "boolean",
+      defaultValue: false,
+      description: "Set display to block",
+      table: {
+        type: {
+          summary: "Set display to block",
+          detail: "Set CSS display property to block instead of inline-block",
+        },
+        defaultValue: false,
+      },
+    },
   }}
 />
 
 # Button
+
 ### Outside of `Description` tag
-<Description markdown={dedent`
+
+<Description
+  markdown={dedent`
 	<p>&nbsp;</p>
 	# Description inside <code>Description</code> tag
 	### Some markdown
 	<p>&nbsp;</p>
-`} />
+`}
+/>
 
 export const Template = ({
-	text,
-	type,
-	size,
-	isFullWidth,
-	link,
-	asAnchor,
-	inverse
+  text,
+  type,
+  size,
+  isFullWidth,
+  link,
+  asAnchor,
+  inverse,
+  displayBlock,
 }) => (
-	<Button
-		text={text}
-		type={type}
-		size={size}
-		isFullWidth={isFullWidth}
-		link={link}
-		asAnchor={asAnchor}
-		inverse={inverse}
-	/>
-)
+  <Button
+    text={text}
+    type={type}
+    size={size}
+    isFullWidth={isFullWidth}
+    link={link}
+    asAnchor={asAnchor}
+    inverse={inverse}
+    displayBlock={displayBlock
+    }
+  />
+);
 
-<Story name="Default Button">
-	{args => <Button {...args} />}
-</Story>
+export const DefaultButton = Template.bind({});
+DefaultButton.args = {
+	text: "Default Button",
+	type: PRIMARY,
+	size: MD,
+	isFullWidth: false,
+	asAnchor: false,
+	link: "",
+	inverse: false,
+	displayBlock: false,
+}
+
+<Story name="Default Button">{DefaultButton}</Story>
 
 <ArgsTable story="Default Button" />
 
 <Source
-	language='jsx'
-	code={dedent`
+  language="jsx"
+  code={dedent`
      <Button text="default text" type={DEFAULT} />
   `}
 />
@@ -193,44 +224,51 @@ export const Template = ({
 # Button Variations
 
 <Canvas>
-	<Story name="Default XL" args={{text: DEFAULT, type: DEFAULT, size: XL}}>
-		{args => <Button {...args} />}
-	</Story>
-	<Story name="Default XL Inverse" args={{text: `inverse`, type: DEFAULT, size: XL, inverse: true}}>
-		{args => <Button {...args} />}
-	</Story>
-	<Story name="Primary LG" args={{text: PRIMARY, type: PRIMARY, size: LG}}>
-		{args => <Button {...args} />}
-	</Story>
-	<Story name="Primary LG Inverse" args={{text: 'inverse', type: PRIMARY, size: LG, inverse: true}}>
-		{args => <Button {...args} />}
-	</Story>
-	<Story name="Secondary SM" args={{text: SECONDARY, type: SECONDARY, size: SM}}>
-		{args => <Button {...args} />}
-	</Story>
-	<Story name="Secondary SM Inverse" args={{text: 'inverse', type: SECONDARY, size: SM, inverse: true}}>
-		{args => <Button {...args} />}
-	</Story>
+  <Story name="Default XL" args={{ text: DEFAULT, type: DEFAULT, size: XL }}>
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Default XL Inverse"
+    args={{ text: `inverse`, type: DEFAULT, size: XL, inverse: true }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story name="Primary LG" args={{ text: PRIMARY, type: PRIMARY, size: LG }}>
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Primary LG Inverse"
+    args={{ text: "inverse", type: PRIMARY, size: LG, inverse: true }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Secondary SM"
+    args={{ text: SECONDARY, type: SECONDARY, size: SM }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Secondary SM Inverse"
+    args={{ text: "inverse", type: SECONDARY, size: SM, inverse: true }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
 </Canvas>
 
 ## Our Color palette
+
 <p>&nbsp;</p>
 
 <ColorPalette>
-	<ColorItem
-		title="Button BG Colors"
-		subtitle="Default state"
-		colors={[
-			'#333',
-			'#a00000',
-			'#0255d7'
-		]} />
-	<ColorItem
-		title="Button BG Colors"
-		subtitle="Hover state"
-		colors={[
-			'#1d1d1d',
-			'#ba1e1e',
-			'#1d6de2'
-		]} />
+  <ColorItem
+    title="Button BG Colors"
+    subtitle="Default state"
+    colors={["#333", "#a00000", "#0255d7"]}
+  />
+  <ColorItem
+    title="Button BG Colors"
+    subtitle="Hover state"
+    colors={["#1d1d1d", "#ba1e1e", "#1d6de2"]}
+  />
 </ColorPalette>

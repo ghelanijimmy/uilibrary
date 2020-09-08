@@ -18,7 +18,7 @@ export const ButtonSC = styled.button`
   text-align: center;
   cursor: pointer;
   transition: ${({ theme }) => theme.common.transitions.defaultTransition};
-  display: inline-block;
+  display: ${({ displayBlock }) => (displayBlock && "block") || "inline-block"};
 
   ${({ type, theme, inverse }) => {
     switch (type) {
@@ -112,4 +112,5 @@ ButtonSC.propTypes = {
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
   isFullWidth: PropTypes.bool,
   inverse: PropTypes.bool,
+  displayBlock: PropTypes.bool,
 };
