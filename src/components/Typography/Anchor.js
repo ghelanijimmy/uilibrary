@@ -11,15 +11,13 @@ const Anchor = ({
   children = null,
   size = MD,
   color = DEFAULT,
-  displayInline = false,
-  makeInlineBlock = false,
+  displayBlock = false,
   hrefLink = "",
   hrefTarget = "_blank",
 }) => {
   return (
     <AnchorSC
-      makeInlineBlock={makeInlineBlock}
-      displayInline={displayInline}
+      displayBlock={displayBlock}
       color={(returnValidColor(color) && color) || "#333"}
       size={size}
       as={"a"}
@@ -35,8 +33,7 @@ Anchor.propTypes = {
   children: PropTypes.any,
   size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
   color: PropTypes.string,
-  displayInline: PropTypes.bool,
-  makeInlineBlock: PropTypes.bool,
+  displayBlock: PropTypes.bool,
   hrefLink: PropTypes.string,
   hrefTarget: PropTypes.oneOf(["_blank", "_self", "_parent", "_top"]),
 };

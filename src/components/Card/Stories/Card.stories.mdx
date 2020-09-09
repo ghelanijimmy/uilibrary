@@ -1,34 +1,85 @@
-import {Meta, Story, Canvas, Description, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import {
+  Meta,
+  Story,
+  Description,
+  ArgsTable,
+  Source,
+} from "@storybook/addon-docs/blocks";
 import Card from "../Card";
 import Paragraph from "../../Typography/Paragraph";
 import Button from "../../Button/Button";
 import dedent from "ts-dedent";
-import {DefaultButton} from "../../Button/Stories/Button.stories.mdx";
-import {DefaultParagraph} from "../../Typography/Stories/Paragraph.stories.mdx";
-import {colorStyles, sizes} from "../../../constants/constants";
+import { DefaultButton } from "../../Button/Stories/Button.stories.mdx";
+import { DefaultParagraph } from "../../Typography/Stories/Paragraph.stories.mdx";
+import { colorStyles, sizes } from "../../../constants/constants";
+import {CardInnerWrapperSC} from "../styled-components/CardSC";
+import Anchor from "../../Typography/Anchor";
+import {DefaultAnchor} from "../../Typography/Stories/Anchor.stories.mdx";
 
 export const PRIMARY = colorStyles.PRIMARY;
 export const MD = sizes.MD;
 
 <Meta
-	title="Cards/MDX"
-	component={Card}
-	subcomponents={{Paragraph, Button}}
-	argTypes={{
-		displayFlex: {
-			name: 'displayFlex',
-			control: 'boolean',
-			defaultValue: false,
-			table: {
-				type: {
-					summary: "Display flex",
-					detail: "Change component to display flex"
-				},
-				defaultValue: false
-			}
-		}
-	}}
+  title="Cards/MDX"
+  component={Card}
+  subcomponents={{ Paragraph, Button }}
+  argTypes={{
+    displayFlex: {
+      name: "displayFlex",
+      control: "boolean",
+      defaultValue: false,
+      table: {
+        type: {
+          summary: "Display flex",
+          detail: "Change component to display flex",
+        },
+        defaultValue: false,
+      },
+    },
+  }}
 />
+
+export const Template = ({ button, paragraph, anchor, ...args }) => (
+  <Card {...args}>
+    <Paragraph {...paragraph}>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
+      delectus exercitationem illum minus molestiae nobis officia pariatur
+      provident quas saepe.
+    </Paragraph>
+	  <Anchor {...anchor} />
+    <Button {...button} />
+  </Card>
+);
+
+export const MultipleTemplate = ({ button, paragraph, anchor, ...args }) => (
+  <Card {...args}>
+    <CardInnerWrapperSC>
+      <Paragraph {...paragraph}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
+        delectus exercitationem illum minus molestiae nobis officia pariatur
+        provident quas saepe.
+      </Paragraph>
+	    <Anchor {...anchor} />
+      <Button {...button} />
+    </CardInnerWrapperSC>
+    <CardInnerWrapperSC>
+      <Paragraph {...paragraph}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto,
+        delectus exercitationem illum minus molestiae nobis officia pariatur
+        provident quas saepe.
+      </Paragraph>
+	    <Anchor {...anchor} />
+      <Button {...button} />
+    </CardInnerWrapperSC>
+  </Card>
+);
+
+export const DefaultCard = Template.bind({});
+DefaultCard.args = {
+  button: { ...DefaultButton.args },
+  paragraph: { ...DefaultParagraph.args },
+	anchor: {...DefaultAnchor.args, displayBlock: true, color: PRIMARY}
+};
 
 # Card
 
@@ -43,19 +94,6 @@ export const MD = sizes.MD;
 	`}
 />
 
-export const Template = ({button, paragraph, ...args}) => (
-	<Card {...args}>
-		<Paragraph {...paragraph}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, delectus exercitationem illum minus molestiae nobis officia pariatur provident quas saepe.</Paragraph>
-		<Button {...button} />
-	</Card>
-)
-
-export const DefaultCard = Template.bind({});
-DefaultCard.args = {
-	button: {...DefaultButton.args},
-	paragraph: {...DefaultParagraph.args},
-}
-
 <Story name="Default Card">{DefaultCard}</Story>
 
 <p>&nbsp;</p>
@@ -63,13 +101,57 @@ DefaultCard.args = {
 <ArgsTable story="Default Card" />
 
 <Source
-	language="jsx"
-	code={dedent`
+  language="jsx"
+  code={dedent`
 		<Card>
 			<Paragraph size={MD} color="" asSpan=false displayInline=false makeInlineBlock=false makeBlock=false>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem in modi quaerat quia totam voluptatum. Dolores ducimus harum similique. Error?
 			</Paragraph>
 			<Button text="Default Button" type={PRIMARY} size={MD} isFullWidth=false asAnchor=false link="" inverse=false displayBlock=false/>
+		</Card>
+	`}
+/>
+
+export const MultipleCard = MultipleTemplate.bind({});
+MultipleCard.args = {
+	anchor: {...DefaultAnchor.args, displayBlock: true, color: PRIMARY}
+}
+
+# Inner Wrapper Multiple Card
+
+### Outside of `Description` tag
+
+<Description
+	markdown={dedent`
+		<p>&nbsp;</p>
+		# Description inside <code>Description</code> tag
+		### Some markdown
+		<p>&nbsp;</p>
+	`}
+/>
+
+<Story name="Multiple Card">{MultipleCard}</Story>
+
+<p>&nbsp;</p>
+
+<ArgsTable story="Multiple Card" />
+
+<Source
+	language="jsx"
+	code={dedent`
+		<Card>
+			<CardInnerWrapperSC>
+				<Paragraph size={MD} color="" asSpan=false displayInline=false makeInlineBlock=false makeBlock=false>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem in modi quaerat quia totam voluptatum. Dolores ducimus harum similique. Error?
+				</Paragraph>
+				<Button text="Default Button" type={PRIMARY} size={MD} isFullWidth=false asAnchor=false link="" inverse=false displayBlock=false/>
+			</CardInnerWrapperSC>
+			<CardInnerWrapperSC>
+				<Paragraph size={MD} color="" asSpan=false displayInline=false makeInlineBlock=false makeBlock=false>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem in modi quaerat quia totam voluptatum. Dolores ducimus harum similique. Error?
+				</Paragraph>
+				<Button text="Default Button" type={PRIMARY} size={MD} isFullWidth=false asAnchor=false link="" inverse=false displayBlock=false/>
+			</CardInnerWrapperSC>
 		</Card>
 	`}
 />

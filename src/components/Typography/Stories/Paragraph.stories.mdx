@@ -125,21 +125,6 @@ export const DEFAULT = colorStyles.DEFAULT;
   }}
 />
 
-# Paragraph
-
-### Outside of `Descripton` tag
-
-<Description
-  markdown={dedent`
-	<p>&nbsp;</p>
-	# Description inside <code>Description</code> tag
-	### Some markdown
-	<p>&nbsp;</p>
-`}
-/>
-
-## Single Paragraph component
-
 export const Template = ({
   size,
   children,
@@ -161,6 +146,39 @@ export const Template = ({
   </Paragraph>
 );
 
+export const MultipleTemplate = ({
+  size,
+  children,
+  color,
+  asSpan,
+  displayInline,
+  makeInlineBlock,
+  makeBlock,
+}) => (
+  <>
+    <Paragraph
+      size={size}
+      color={color}
+      asSpan={asSpan}
+      displayInline={displayInline}
+      makeInlineBlock={makeInlineBlock}
+      makeBlock={makeBlock}
+    >
+      {children}
+    </Paragraph>
+    <Paragraph
+      size={size}
+      color={color}
+      asSpan={asSpan}
+      displayInline={displayInline}
+      makeInlineBlock={makeInlineBlock}
+      makeBlock={makeBlock}
+    >
+      {children}
+    </Paragraph>
+  </>
+);
+
 export const DefaultParagraph = Template.bind({});
 DefaultParagraph.args = {
   size: MD,
@@ -169,7 +187,34 @@ DefaultParagraph.args = {
   displayInline: false,
   makeInlineBlock: false,
   makeBlock: false,
+  children: "Lorem ipsum dolor sit amet.",
 };
+
+export const MultipleParagraphs = MultipleTemplate.bind({});
+MultipleParagraphs.args = {
+  size: MD,
+  color: "",
+  asSpan: false,
+  displayInline: false,
+  makeInlineBlock: false,
+  makeBlock: false,
+  children: "Lorem ipsum dolor sit amet.",
+};
+
+# Paragraph
+
+### Outside of `Descripton` tag
+
+<Description
+	markdown={dedent`
+	<p>&nbsp;</p>
+	# Description inside <code>Description</code> tag
+	### Some markdown
+	<p>&nbsp;</p>
+`}
+/>
+
+## Single Paragraph component
 
 <Story name="Default Text">{DefaultParagraph}</Story>
 
@@ -184,14 +229,7 @@ DefaultParagraph.args = {
 
 ## Multiple Paragraph components
 
-<Story name="Multiple Paragraphs">
-  {(args) => (
-    <div>
-      <Paragraph {...args} />
-      <Paragraph {...args} />
-    </div>
-  )}
-</Story>
+<Story name="Multiple Paragraphs">{MultipleParagraphs}</Story>
 
 <ArgsTable story="Multiple Paragraphs" />
 
@@ -199,8 +237,8 @@ DefaultParagraph.args = {
   language="jsx"
   code={dedent`
 		<div>
-			<Paragraph size="" children="Default Text" color="">Default Text</Paragraph>
-			<Paragraph size="" children="Default Text" color="">Default Text</Paragraph>
+			<Paragraph size={MD} color="">Lorem ipsum dolor sit amet.</Paragraph>
+			<Paragraph size={MD} color="">Lorem ipsum dolor sit amet.</Paragraph>
 		</div>
 	`}
 />
