@@ -26,12 +26,7 @@ export default {
       control: "color",
       defaultValue: "",
     },
-    displayInline: {
-      type: "boolean",
-      control: "boolean",
-      defaultValue: false,
-    },
-    makeInlineBlock: {
+    displayBlock: {
       type: "boolean",
       control: "boolean",
       defaultValue: false,
@@ -56,16 +51,14 @@ const AnchorTemplate = ({
   size,
   children,
   color,
-  displayInline,
-  makeInlineBlock,
+  displayBlock,
   hrefLink,
   hrefTarget,
 }) => (
   <Anchor
     size={size}
     color={color}
-    displayInline={displayInline}
-    makeInlineBlock={makeInlineBlock}
+    displayBlock={displayBlock}
     hrefLink={hrefLink}
     hrefTarget={hrefTarget}
   >
@@ -74,6 +67,14 @@ const AnchorTemplate = ({
 );
 
 export const DefaultAnchor = AnchorTemplate.bind({});
+DefaultAnchor.args = {
+  size: MD,
+  color: "",
+  displayBlock: false,
+  hrefLink: "",
+  hrefTarget: "_blank",
+  children: "Default Link",
+};
 export const SmallAnchor = AnchorTemplate.bind({});
 SmallAnchor.args = {
   size: SM,

@@ -58,28 +58,14 @@ export const DEFAULT = colorStyles.DEFAULT;
 				}
 			}
 		},
-		displayInline: {
-			name: 'displayInline',
+		displayBlock: {
+			name: 'displayBlock',
 			defaultValue: false,
 			control: 'boolean',
 			table: {
 				type: {
-					summary: "Make inline",
-					detail: "Change CSS display to inline"
-				},
-				defaultValue: {
-					summary: false
-				}
-			}
-		},
-		makeInlineBlock: {
-			name: 'makeInlineBlock',
-			defaultValue: false,
-			control: 'boolean',
-			table: {
-				type: {
-					summary: "Make inline block",
-					detail: "If displayInline is true, change CSS display to inline-block"
+					summary: "Make block",
+					detail: "Change CSS display to block"
 				},
 				defaultValue: {
 					summary: false
@@ -101,7 +87,7 @@ export const DEFAULT = colorStyles.DEFAULT;
 			}
 		},
 		hrefTarget: {
-			name: "hrefLink",
+			name: "hrefTarget",
 			defaultValue: "_blank",
 			control: {
 				type: "inline-radio",
@@ -120,6 +106,19 @@ export const DEFAULT = colorStyles.DEFAULT;
 	}}
 />
 
+export const Template = args => (
+	<Anchor {...args}>{args.children}</Anchor>
+)
+export const DefaultAnchor = Template.bind({});
+DefaultAnchor.args = {
+	size: MD,
+	color: "",
+	displayBlock: false,
+	hrefLink: "",
+	hrefTarget: "_blank",
+	children: "Default Link"
+}
+
 # Anchor
 ### Outside of `Descripton` tag
 
@@ -133,7 +132,7 @@ export const DEFAULT = colorStyles.DEFAULT;
 ## Single Anchor component
 
 <Story name="Default Anchor">
-	{args => <Anchor {...args} />}
+	{DefaultAnchor}
 </Story>
 
 <ArgsTable story="Default Anchor" />
