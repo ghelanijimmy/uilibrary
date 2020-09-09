@@ -15,6 +15,10 @@ export const CardSC = styled.div`
 
   ${CardInnerWrapperSC} {
     margin-bottom: ${({ theme }) => theme.common.sizing.defaultPadding};
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   ${({ displayFlex }) =>
