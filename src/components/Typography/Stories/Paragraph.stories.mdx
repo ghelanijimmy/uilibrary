@@ -1,7 +1,15 @@
-import {Meta, Canvas, Story, ArgsTable, Description, Source, Typeset} from "@storybook/addon-docs/blocks";
+import {
+  Meta,
+  Canvas,
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Typeset,
+} from "@storybook/addon-docs/blocks";
 import Paragraph from "../Paragraph";
 import dedent from "ts-dedent";
-import {sizes, colorStyles} from "../../../constants/constants";
+import { sizes, colorStyles } from "../../../constants/constants";
 
 export const SM = sizes.SM;
 export const MD = sizes.MD;
@@ -12,130 +20,164 @@ export const SECONDARY = colorStyles.SECONDARY;
 export const DEFAULT = colorStyles.DEFAULT;
 
 <Meta
-	title="Typography/Paragraph/MDX"
-	component={Paragraph}
-	argTypes={{
-		size: {
-			name: 'size',
-			defaultValue: "",
-			control: {
-				type: 'inline-radio',
-				options: [SM, MD, LG, XL]
-			},
-			table: {
-				type: {
-					summary: "Paragraph size",
-					detail: "Render different font sizes for the paragraph"
-				},
-				defaultValue: {
-					summary: 'blank for default'
-				}
-			}
-		},
-		children: {
-			name: 'children (Content)',
-			defaultValue: "Default Text",
-			control: "text",
-			table: {
-				type: {
-					summary: "Content",
-					detail: "Any text or html/jsx content can go in here"
-				},
-				defaultValue: "Default Text"
-			}
-		},
-		color: {
-			name: 'color',
-			defaultValue: '',
-			control: 'color',
-			table: {
-				type: {
-					summary: "Text color",
-					detail: "Options include primary, secondary, default or color value"
-				},
-				defaultValue: {
-					summary: ''
-				}
-			}
-		},
-		asSpan: {
-			name: 'asSpan',
-			defaultValue: false,
-			control: 'boolean',
-			table: {
-				type: {
-					summary: "Render as span",
-					detail: "Render as 'span' tag instead of 'p' tag"
-				},
-				defaultValue: {
-					summary: false
-				}
-			}
-		},
-		displayInline: {
-			name: 'displayInline',
-			defaultValue: false,
-			control: 'boolean',
-			table: {
-				type: {
-					summary: "Make inline",
-					detail: "Change CSS display to inline"
-				},
-				defaultValue: {
-					summary: false
-				}
-			}
-		},
-		makeInlineBlock: {
-			name: 'makeInlineBlock',
-			defaultValue: false,
-			control: 'boolean',
-			table: {
-				type: {
-					summary: "Make inline block",
-					detail: "If displayInline is true, change CSS display to inline-block"
-				},
-				defaultValue: {
-					summary: false
-				}
-			}
-		},
-		makeBlock: {
-			name: 'makeBlock',
-			defaultValue: false,
-			control: 'boolean',
-			table: {
-				type: {
-					summary: 'Make block',
-					detail: "If not displayInline or makeInlineBLock, change CSS to display block"
-				},
-				defaultValue: false
-			}
-		}
-	}}
+  title="Typography/Paragraph/MDX"
+  component={Paragraph}
+  argTypes={{
+    size: {
+      name: "size",
+      defaultValue: "",
+      control: {
+        type: "inline-radio",
+        options: [SM, MD, LG, XL],
+      },
+      table: {
+        type: {
+          summary: "Paragraph size",
+          detail: "Render different font sizes for the paragraph",
+        },
+        defaultValue: {
+          summary: "blank for default",
+        },
+      },
+    },
+    children: {
+      name: "children (Content)",
+      defaultValue: "Default Text",
+      control: "text",
+      table: {
+        type: {
+          summary: "Content",
+          detail: "Any text or html/jsx content can go in here",
+        },
+        defaultValue: "Default Text",
+      },
+    },
+    color: {
+      name: "color",
+      defaultValue: "",
+      control: "color",
+      table: {
+        type: {
+          summary: "Text color",
+          detail: "Options include primary, secondary, default or color value",
+        },
+        defaultValue: {
+          summary: "",
+        },
+      },
+    },
+    asSpan: {
+      name: "asSpan",
+      defaultValue: false,
+      control: "boolean",
+      table: {
+        type: {
+          summary: "Render as span",
+          detail: "Render as 'span' tag instead of 'p' tag",
+        },
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
+    displayInline: {
+      name: "displayInline",
+      defaultValue: false,
+      control: "boolean",
+      table: {
+        type: {
+          summary: "Make inline",
+          detail: "Change CSS display to inline",
+        },
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
+    makeInlineBlock: {
+      name: "makeInlineBlock",
+      defaultValue: false,
+      control: "boolean",
+      table: {
+        type: {
+          summary: "Make inline block",
+          detail:
+            "If displayInline is true, change CSS display to inline-block",
+        },
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
+    makeBlock: {
+      name: "makeBlock",
+      defaultValue: false,
+      control: "boolean",
+      table: {
+        type: {
+          summary: "Make block",
+          detail:
+            "If not displayInline or makeInlineBLock, change CSS to display block",
+        },
+        defaultValue: false,
+      },
+    },
+  }}
 />
 
 # Paragraph
+
 ### Outside of `Descripton` tag
 
-<Description markdown={dedent`
+<Description
+  markdown={dedent`
 	<p>&nbsp;</p>
 	# Description inside <code>Description</code> tag
 	### Some markdown
 	<p>&nbsp;</p>
-`} />
+`}
+/>
 
 ## Single Paragraph component
 
-<Story name="Default Text">
-	{args => <Paragraph {...args} />}
-</Story>
+export const Template = ({
+  size,
+  children,
+  color,
+  asSpan,
+  displayInline,
+  makeInlineBlock,
+  makeBlock,
+}) => (
+  <Paragraph
+    size={size}
+    color={color}
+    asSpan={asSpan}
+    displayInline={displayInline}
+    makeInlineBlock={makeInlineBlock}
+    makeBlock={makeBlock}
+  >
+    {children}
+  </Paragraph>
+);
+
+export const DefaultParagraph = Template.bind({});
+DefaultParagraph.args = {
+  size: MD,
+  color: "",
+  asSpan: false,
+  displayInline: false,
+  makeInlineBlock: false,
+  makeBlock: false,
+};
+
+<Story name="Default Text">{DefaultParagraph}</Story>
 
 <ArgsTable story="Default Text" />
 
 <Source
-	language="jsx"
-	code={dedent`
+  language="jsx"
+  code={dedent`
 		<Paragraph size="" children="Default Text" color="">Default Text</Paragraph>
 	`}
 />
@@ -143,19 +185,19 @@ export const DEFAULT = colorStyles.DEFAULT;
 ## Multiple Paragraph components
 
 <Story name="Multiple Paragraphs">
-	{args => (
-		<div>
-			<Paragraph {...args} />
-			<Paragraph {...args} />
-		</div>
-	)}
+  {(args) => (
+    <div>
+      <Paragraph {...args} />
+      <Paragraph {...args} />
+    </div>
+  )}
 </Story>
 
 <ArgsTable story="Multiple Paragraphs" />
 
 <Source
-	language="jsx"
-	code={dedent`
+  language="jsx"
+  code={dedent`
 		<div>
 			<Paragraph size="" children="Default Text" color="">Default Text</Paragraph>
 			<Paragraph size="" children="Default Text" color="">Default Text</Paragraph>
@@ -166,27 +208,37 @@ export const DEFAULT = colorStyles.DEFAULT;
 # Paragraph Variations
 
 <Canvas>
-	<Story name="Small" args={{size: SM, children: "Default", color: DEFAULT}}>
-		{args => <Paragraph {...args} />}
-	</Story>
-	<Story name="Default" args={{size: "", children: 'Primary', color: PRIMARY}}>
-		{args => <Paragraph {...args} />}
-	</Story>
-	<Story name="Medium" args={{size: MD, children: 'Secondary', color: SECONDARY}}>
-		{args => <Paragraph {...args} />}
-	</Story>
-	<Story name="Large" args={{size: LG, children: 'Large', color: '#ededed'}}>
-		{args => <Paragraph {...args} />}
-	</Story>
-	<Story name="Extra Large" args={{size: XL, children: 'Extra Large', color: 'pink'}}>
-		{args => <Paragraph {...args} />}
-	</Story>
+  <Story name="Small" args={{ size: SM, children: "Default", color: DEFAULT }}>
+    {(args) => <Paragraph {...args} />}
+  </Story>
+  <Story
+    name="Default"
+    args={{ size: "", children: "Primary", color: PRIMARY }}
+  >
+    {(args) => <Paragraph {...args} />}
+  </Story>
+  <Story
+    name="Medium"
+    args={{ size: MD, children: "Secondary", color: SECONDARY }}
+  >
+    {(args) => <Paragraph {...args} />}
+  </Story>
+  <Story name="Large" args={{ size: LG, children: "Large", color: "#ededed" }}>
+    {(args) => <Paragraph {...args} />}
+  </Story>
+  <Story
+    name="Extra Large"
+    args={{ size: XL, children: "Extra Large", color: "pink" }}
+  >
+    {(args) => <Paragraph {...args} />}
+  </Story>
 </Canvas>
 
 ## Typeset
+
 <p>&nbsp;</p>
 
 <Typeset
-	fontSizes={['.875em', '1em', '1.25em', '1.5em', '2em']}
-	sampleText="Some Sample Text"
+  fontSizes={[".875em", "1em", "1.25em", "1.5em", "2em"]}
+  sampleText="Some Sample Text"
 />

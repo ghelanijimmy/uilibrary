@@ -1,20 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import TypographySC from "./styled-components/Typography";
 import { colorStyles, sizes } from "../../constants/constants";
 import returnValidColor from "../../helpers/returnValidColor";
+import { AnchorSC } from "./styled-components/AnchorSC";
 
 const { SM, MD, LG, XL } = sizes;
 const { DEFAULT } = colorStyles;
-
-const AnchorSC = styled(TypographySC)``;
-AnchorSC.propTypes = {
-  size: PropTypes.oneOf([SM, MD, LG, XL, ""]),
-  color: PropTypes.string,
-  displayInline: PropTypes.bool,
-  makeInlineBlock: PropTypes.bool,
-};
 
 const Anchor = ({
   children = null,
