@@ -1,9 +1,12 @@
 import React, { Fragment, useState } from "react";
 import Modal from "../Modal";
 import Button from "../../Button/Button";
-import { colorStyles } from "../../../constants/constants";
+import { colorStyles, sizes } from "../../../constants/constants";
+import Paragraph from "../../Typography/Paragraph";
+import Card from "../../Card/Card";
 
-const { PRIMARY } = colorStyles;
+const { PRIMARY, SECONDARY } = colorStyles;
+const { LG } = sizes;
 
 export default {
   title: "Modal/CSF",
@@ -11,24 +14,43 @@ export default {
   argTypes: {
     showModal: {
       type: "boolean",
-      control: null,
+      control: "boolean",
     },
     onCloseCallback: {
       type: "function",
       control: null,
     },
+    bgColor: {
+      type: "string",
+      control: "color",
+    },
   },
 };
 
-const Template = () => {
+const Template = (args) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleModalClick = () => setOpenModal(!openModal);
 
   return (
     <Fragment>
-      <Modal onCloseCallback={handleModalClick} showModal={openModal}>
-        <p>Test</p>
+      <Modal
+        onCloseCallback={handleModalClick}
+        showModal={
+          (typeof args.showModal === "boolean" && args.showModal) || openModal
+        }
+        bgColor={args.bgColor}
+      >
+        <Card>
+          <Paragraph size={LG} color={SECONDARY}>
+            Modal Title
+          </Paragraph>
+          <Paragraph>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Accusantium architecto at eos error et eveniet illo magnam omnis
+            rerum sunt?
+          </Paragraph>
+        </Card>
       </Modal>
       <Button
         handleClick={handleModalClick}

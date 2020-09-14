@@ -7,6 +7,18 @@ import { ParagraphSC } from "./styled-components/ParagraphSC";
 const { SM, MD, LG, XL } = sizes;
 const { DEFAULT } = colorStyles;
 
+/**
+ * Paragraph Component
+ * @param children {Object}
+ * @param size {"sm" | "md" | "lg" | "xl" | ""}
+ * @param color {string}
+ * @param asSpan {boolean}
+ * @param displayInline {boolean}
+ * @param makeInlineBlock {boolean}
+ * @param makeBlock {boolean}
+ * @return {JSX.Element}
+ * @category Components
+ */
 const Paragraph = ({
   children = null,
   size = MD,

@@ -9,7 +9,7 @@ export const ModalCloseButton = styled(Button)`
 `;
 
 export const ModalSC = styled.div`
-  ${({ theme, show }) => {
+  ${({ theme, show, bgColor, hideZIndex }) => {
     const { common } = theme;
 
     return css`
@@ -23,7 +23,7 @@ export const ModalSC = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: ${(bgColor && bgColor) || "rgba(0, 0, 0, 0.5)"};
       transition: ${common.transitions.defaultTransition};
       ${(show &&
         css`
@@ -31,10 +31,13 @@ export const ModalSC = styled.div`
         `) ||
       css`
         opacity: 0;
+        z-index: ${(hideZIndex && "-1") || "initial"};
       `};
     `;
   }}
 `;
 ModalSC.propTypes = {
   show: PropTypes.bool,
+  bgColor: PropTypes.string,
+  hideZIndex: PropTypes.bool,
 };

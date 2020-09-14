@@ -3,13 +3,20 @@ import PropTypes from "prop-types";
 import { ModalSC, ModalCloseButton } from "./styled-components/ModalSC";
 import { createPortal } from "react-dom";
 import { colorStyles } from "../../constants/constants";
+import returnValidColor from "../../helpers/returnValidColor";
 
 const { DEFAULT } = colorStyles;
 
 const ModalPortal = forwardRef(
-  ({ children, element, show, handleCloseModal }, ref) => {
+  ({ children, element, show, handleCloseModal, bgColor, hideZIndex }, ref) => {
     return createPortal(
-      <ModalSC ref={ref} show={show} tabIndex={1}>
+      <ModalSC
+        ref={ref}
+        show={show}
+        tabIndex={1}
+        bgColor={(returnValidColor(bgColor) && bgColor) || ""}
+        hideZIndex={hideZIndex}
+      >
         <div>{children}</div>
         <ModalCloseButton
           size="sm"
@@ -27,11 +34,14 @@ ModalPortal.propTypes = {
   element: PropTypes.object,
   show: PropTypes.bool,
   handleCloseModal: PropTypes.func,
+  bgColor: PropTypes.string,
+  hideZIndex: PropTypes.bool,
 };
 
-const Modal = ({ children, showModal, onCloseCallback }) => {
+const Modal = ({ children, showModal, onCloseCallback, bgColor }) => {
   const [modal, setModal] = useState(null);
   const [showContent, setShowContent] = useState(false);
+  const [hideZIndex, setHideZIndex] = useState(false);
 
   const modalRef = useRef();
 
@@ -44,6 +54,7 @@ const Modal = ({ children, showModal, onCloseCallback }) => {
       document.body.style.overflow = "hidden";
       setTimeout(() => {
         setShowContent(true);
+        setHideZIndex(false);
       }, 250);
     }
 
@@ -59,6 +70,7 @@ const Modal = ({ children, showModal, onCloseCallback }) => {
     setShowContent(false);
     setTimeout(() => {
       typeof onCloseCallback === "function" && onCloseCallback();
+      setHideZIndex(true);
     }, 300);
   };
 
@@ -76,6 +88,8 @@ const Modal = ({ children, showModal, onCloseCallback }) => {
         element={modal}
         handleCloseModal={handleCloseModal}
         ref={modalRef}
+        bgColor={bgColor}
+        hideZIndex={hideZIndex}
       >
         {children}
       </ModalPortal>
@@ -86,6 +100,7 @@ const Modal = ({ children, showModal, onCloseCallback }) => {
 Modal.propTypes = {
   showModal: PropTypes.bool,
   onCloseCallback: PropTypes.func,
+  bgColor: PropTypes.string,
 };
 
 export default Modal;
