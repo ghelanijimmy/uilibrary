@@ -1,0 +1,49 @@
+import {Meta, Story, ArgsTable, Canvas} from "@storybook/addon-docs/blocks";
+import Modal from "../Modal";
+import Card from "../../Card/Card";
+import Paragraph from "../../Typography/Paragraph";
+import {colorStyles, sizes} from "../../../constants/constants";
+
+export const PRIMARY = colorStyles.PRIMARY;
+export const LG = sizes.LG;
+
+<Meta
+	title="Modal/MDX"
+	component={Modal}
+	argTypes={{
+		showModal: {
+			control: {
+				type: 'boolean',
+			},
+			defaultValue: true
+		},
+		onCloseCallback: {
+			type: 'function',
+			defaultValue: ()=>null
+		},
+		bgColor: {
+			control: {
+				type: 'color'
+			}
+		}
+	}}
+/>
+
+export const ModalTemplate = args => (
+	<Modal {...args} >
+		<Card>
+			<Paragraph size={LG} color={PRIMARY}>Modal Title</Paragraph>
+			<Paragraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ducimus eligendi excepturi exercitationem maiores minus molestias officia quos reprehenderit velit!</Paragraph>
+		</Card>
+	</Modal>
+)
+
+export const DefaultModal = ModalTemplate.bind({});
+
+<Canvas>
+	<Story name="Default">
+		{DefaultModal}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Default" />

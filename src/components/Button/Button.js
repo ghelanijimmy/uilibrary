@@ -24,6 +24,7 @@ const { PRIMARY, SECONDARY, DEFAULT } = colorStyles;
  * @param inverse {boolean}
  * @param handleClick {function}
  * @param displayBlock {boolean}
+ * @param className {string}
  * @return {JSX.Element}
  * @category Components
  */
@@ -37,6 +38,7 @@ const Button = ({
   inverse = false,
   handleClick = () => null,
   displayBlock = false,
+  className = "",
 }) => {
   return (
     <ButtonSC
@@ -48,6 +50,7 @@ const Button = ({
       inverse={inverse}
       onClick={handleClick}
       displayBlock={displayBlock}
+      className={className}
     >
       {text}
     </ButtonSC>
@@ -63,5 +66,6 @@ Button.propTypes = {
   inverse: PropTypes.bool,
   handleClick: PropTypes.func,
   displayBlock: PropTypes.bool,
+  className: PropTypes.string,
 };
 export default Button;

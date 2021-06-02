@@ -8,10 +8,10 @@ module.exports = {
     "@storybook/addon-a11y",
     "@storybook/addon-cssresources",
   ],
-  refs: {
-    consumerUi: {
-      title: "Consumer UI",
-      url: "https://5eab4f5d1a0d650022a919d6-bckvdgwpzr.chromatic.com/",
-    },
-  },
+  // refs: {
+  //   consumerUi: {
+  //     title: "Consumer UI",
+  //     url: "https://5eab4f5d1a0d650022a919d6-bckvdgwpzr.chromatic.com/",
+  //   },
+  // },
 };
