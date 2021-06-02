@@ -19,6 +19,7 @@ export const ButtonSC = styled.button`
   cursor: pointer;
   transition: ${({ theme }) => theme.common.transitions.defaultTransition};
   display: ${({ displayBlock }) => (displayBlock && "block") || "inline-block"};
+  min-height: 200px;
 
   ${({ type, theme, inverse }) => {
     switch (type) {
