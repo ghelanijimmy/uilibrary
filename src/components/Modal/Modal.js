@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import {addThemeWrapper} from "../../styles/addThemeWrapper";
 import { ModalSC, ModalCloseButton } from "./styled-components/ModalSC";
 import { createPortal } from "react-dom";
 import { colorStyles } from "../../constants/constants";
@@ -103,4 +104,4 @@ Modal.propTypes = {
   bgColor: PropTypes.string,
 };
 
-export default Modal;
+export default addThemeWrapper(Modal);

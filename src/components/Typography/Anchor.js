@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { colorStyles, sizes } from "../../constants/constants";
 import returnValidColor from "../../helpers/returnValidColor";
+import {addThemeWrapper} from "../../styles/addThemeWrapper";
 import { AnchorSC } from "./styled-components/AnchorSC";
 
 const { SM, MD, LG, XL } = sizes;
@@ -38,4 +39,4 @@ Anchor.propTypes = {
   hrefTarget: PropTypes.oneOf(["_blank", "_self", "_parent", "_top"]),
 };
 
-export default Anchor;
+export default addThemeWrapper(Anchor);
