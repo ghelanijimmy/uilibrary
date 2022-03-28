@@ -1,6 +1,7 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import { colorStyles } from "../../constants/constants";
+import {addThemeWrapper} from "../../styles/addThemeWrapper";
 import { ButtonSC } from "./styled-components/ButtonSC";
 
 const { PRIMARY, SECONDARY, DEFAULT } = colorStyles;
@@ -25,6 +26,7 @@ const { PRIMARY, SECONDARY, DEFAULT } = colorStyles;
  * @param handleClick {function}
  * @param displayBlock {boolean}
  * @param className {string}
+ * @param {object} [theme]
  * @return {JSX.Element}
  * @category Components
  */
@@ -39,6 +41,7 @@ const Button = ({
   handleClick = () => null,
   displayBlock = false,
   className = "",
+  theme = {}
 }) => {
   return (
     <ButtonSC
@@ -67,5 +70,6 @@ Button.propTypes = {
   handleClick: PropTypes.func,
   displayBlock: PropTypes.bool,
   className: PropTypes.string,
+  theme: PropTypes.object,
 };
-export default Button;
+export default addThemeWrapper(Button);

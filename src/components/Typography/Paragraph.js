@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { colorStyles, sizes } from "../../constants/constants";
 import returnValidColor from "../../helpers/returnValidColor";
+import {addThemeWrapper} from "../../styles/addThemeWrapper";
 import { ParagraphSC } from "./styled-components/ParagraphSC";
 
 const { SM, MD, LG, XL } = sizes;
@@ -53,4 +54,4 @@ Paragraph.propTypes = {
   makeBlock: PropTypes.bool,
 };
 
-export default Paragraph;
+export default addThemeWrapper(Paragraph);
